@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/ATEngine.html">ATEngine</a></li>
             
+                <li><a href="../classes/ATEvent.html">ATEvent</a></li>
+            
                 <li><a href="../classes/ATFragmentShader.html">ATFragmentShader</a></li>
+            
+                <li><a href="../classes/ATGeometry.html">ATGeometry</a></li>
+            
+                <li><a href="../classes/ATKeyboard.html">ATKeyboard</a></li>
             
                 <li><a href="../classes/ATMaterial.html">ATMaterial</a></li>
             
@@ -55,11 +61,15 @@
             
                 <li><a href="../classes/ATMaterialTextura.html">ATMaterialTextura</a></li>
             
+                <li><a href="../classes/ATMouse.html">ATMouse</a></li>
+            
                 <li><a href="../classes/ATObjeto3D.html">ATObjeto3D</a></li>
             
                 <li><a href="../classes/ATShader.html">ATShader</a></li>
             
                 <li><a href="../classes/ATShaderProgram.html">ATShaderProgram</a></li>
+            
+                <li><a href="../classes/ATTrackball.html">ATTrackball</a></li>
             
                 <li><a href="../classes/ATVertexShader.html">ATVertexShader</a></li>
             
@@ -76,7 +86,7 @@
         </div>
         <div class="yui3-u-3-4">
                 <div id="api-options">
-        Show:
+        Mostrar:
         <label for="api-show-inherited">
             <input type="checkbox" id="api-show-inherited" checked>
             Herdado
@@ -107,27 +117,22 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-* Representação da Câmera em uma cena
+* Objeto consistindo do material (cor, textura...) 
+* e sua geometria (com posições, normais...)
 * @class ATObjeto3D
 * @constructor
+* @beta
+* @since 0.0.1
 */
 function ATObjeto3D()
 {
-  this.material = null;
-  this.posicoes= [];
-  this.normais = [];
-
-  this.buffer
+  var material = null;
+  var geometria = null;
   
-  this.lerOBJ = function()
+  this.lerOBJ = function(nome)
   {
     
   }
-}
-
-function ATObjeto3D()
-{
-  
 }
     </pre>
 </div>

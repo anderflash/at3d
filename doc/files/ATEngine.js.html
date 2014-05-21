@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/ATEngine.html">ATEngine</a></li>
             
+                <li><a href="../classes/ATEvent.html">ATEvent</a></li>
+            
                 <li><a href="../classes/ATFragmentShader.html">ATFragmentShader</a></li>
+            
+                <li><a href="../classes/ATGeometry.html">ATGeometry</a></li>
+            
+                <li><a href="../classes/ATKeyboard.html">ATKeyboard</a></li>
             
                 <li><a href="../classes/ATMaterial.html">ATMaterial</a></li>
             
@@ -55,11 +61,15 @@
             
                 <li><a href="../classes/ATMaterialTextura.html">ATMaterialTextura</a></li>
             
+                <li><a href="../classes/ATMouse.html">ATMouse</a></li>
+            
                 <li><a href="../classes/ATObjeto3D.html">ATObjeto3D</a></li>
             
                 <li><a href="../classes/ATShader.html">ATShader</a></li>
             
                 <li><a href="../classes/ATShaderProgram.html">ATShaderProgram</a></li>
+            
+                <li><a href="../classes/ATTrackball.html">ATTrackball</a></li>
             
                 <li><a href="../classes/ATVertexShader.html">ATVertexShader</a></li>
             
@@ -76,7 +86,7 @@
         </div>
         <div class="yui3-u-3-4">
                 <div id="api-options">
-        Show:
+        Mostrar:
         <label for="api-show-inherited">
             <input type="checkbox" id="api-show-inherited" checked>
             Herdado
@@ -108,9 +118,24 @@
     <pre class="code prettyprint linenums">
 /**
 * É a raiz da estrutura da biblioteca
-* Configura-se o ambiente, e criam-se as cenas usando esta classe
+* Configura-se o ambiente, e criam-se as cenas usando esta classe.
+* Você deve usar da seguinte forma:
+* 
+*     var engine = new ATEngine(&quot;canvas_id&quot;);
+*     engine.carregarShaders({ATMaterialCor:[&quot;ArquivoVShader.glsl&quot;, &quot;ArquivoFShader.glsl&quot;]});
+*     engine.pronto(function(){
+*        var cena = engine.getCena();
+*        var camera = engine.getCamera();
+* 
+*        // Construa a cena aqui
+* 
+*        cena.desenhar(camera);
+*     });
+* 
 * @class ATEngine
 * @constructor
+* @beta
+* @since 0.0.1
 */
 function ATEngine(nomecanvas)
 {
@@ -118,7 +143,7 @@ function ATEngine(nomecanvas)
    * Variáveis Privadas
    --------------------*/
   /**
-  * Referência a si mesma (o this não funciona bem em funções assíncronas)
+  * Referência a si mesma (o &#x60;this&#x60; não funciona bem em funções assíncronas)
   * @private
   * @property engine
   * @type ATEngine
@@ -144,14 +169,26 @@ function ATEngine(nomecanvas)
   * @property gl
   * @type HTMLCanvas
   */
-  var gl = this.canvas.getContext(&quot;webgl&quot;) || this.canvas.getContext(&quot;experimental-webgl&quot;);
+  var gl = this.canvas.getContext(&quot;webgl&quot;) || 
+           this.canvas.getContext(&quot;experimental-webgl&quot;);
   /**
   * Lista de cenas para desenhar
   * @private
   * @property cenas
   * @type Array&lt;ATCena3D&gt;
   */
-  var cenas = [];
+  var cenas = [new ATCena3D(&quot;cena&quot;)];
+  
+  /**
+  * Lista de câmeras. Por padrão a engine provê 
+  * uma câmera. Pode-se usar a mesma câmera para 
+  * diferentes cenas.
+  * @private
+  * @property cameras
+  * @type Array&lt;ATCamera&gt;
+  */
+  var cameras = [new ATCamera(&quot;camera&quot;)];
+  
   /**
   * Lista de programas de shaders
   * @private

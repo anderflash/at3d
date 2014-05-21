@@ -4,6 +4,8 @@
 * Por enquanto os objetos são associados a apenas uma cena
 * @class ATCena3D
 * @constructor
+* @beta
+* @since 0.0.1
 */
 function ATCena3D()
 {

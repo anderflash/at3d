@@ -1,8 +1,23 @@
 /**
 * É a raiz da estrutura da biblioteca
-* Configura-se o ambiente, e criam-se as cenas usando esta classe
+* Configura-se o ambiente, e criam-se as cenas usando esta classe.
+* Você deve usar da seguinte forma:
+* 
+*     var engine = new ATEngine("canvas_id");
+*     engine.carregarShaders({ATMaterialCor:["ArquivoVShader.glsl", "ArquivoFShader.glsl"]});
+*     engine.pronto(function(){
+*        var cena = engine.getCena();
+*        var camera = engine.getCamera();
+* 
+*        // Construa a cena aqui
+* 
+*        cena.desenhar(camera);
+*     });
+* 
 * @class ATEngine
 * @constructor
+* @beta
+* @since 0.0.1
 */
 function ATEngine(nomecanvas)
 {
@@ -10,7 +25,7 @@ function ATEngine(nomecanvas)
    * Variáveis Privadas
    --------------------*/
   /**
-  * Referência a si mesma (o this não funciona bem em funções assíncronas)
+  * Referência a si mesma (o `this` não funciona bem em funções assíncronas)
   * @private
   * @property engine
   * @type ATEngine
@@ -36,14 +51,26 @@ function ATEngine(nomecanvas)
   * @property gl
   * @type HTMLCanvas
   */
-  var gl = this.canvas.getContext("webgl") || this.canvas.getContext("experimental-webgl");
+  var gl = this.canvas.getContext("webgl") || 
+           this.canvas.getContext("experimental-webgl");
   /**
   * Lista de cenas para desenhar
   * @private
   * @property cenas
   * @type Array<ATCena3D>
   */
-  var cenas = [];
+  var cenas = [new ATCena3D("cena")];
+  
+  /**
+  * Lista de câmeras. Por padrão a engine provê 
+  * uma câmera. Pode-se usar a mesma câmera para 
+  * diferentes cenas.
+  * @private
+  * @property cameras
+  * @type Array<ATCamera>
+  */
+  var cameras = [new ATCamera("camera")];
+  
   /**
   * Lista de programas de shaders
   * @private

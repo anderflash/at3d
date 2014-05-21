@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/ATEngine.html">ATEngine</a></li>
             
+                <li><a href="../classes/ATEvent.html">ATEvent</a></li>
+            
                 <li><a href="../classes/ATFragmentShader.html">ATFragmentShader</a></li>
+            
+                <li><a href="../classes/ATGeometry.html">ATGeometry</a></li>
+            
+                <li><a href="../classes/ATKeyboard.html">ATKeyboard</a></li>
             
                 <li><a href="../classes/ATMaterial.html">ATMaterial</a></li>
             
@@ -55,11 +61,15 @@
             
                 <li><a href="../classes/ATMaterialTextura.html">ATMaterialTextura</a></li>
             
+                <li><a href="../classes/ATMouse.html">ATMouse</a></li>
+            
                 <li><a href="../classes/ATObjeto3D.html">ATObjeto3D</a></li>
             
                 <li><a href="../classes/ATShader.html">ATShader</a></li>
             
                 <li><a href="../classes/ATShaderProgram.html">ATShaderProgram</a></li>
+            
+                <li><a href="../classes/ATTrackball.html">ATTrackball</a></li>
             
                 <li><a href="../classes/ATVertexShader.html">ATVertexShader</a></li>
             
@@ -76,7 +86,7 @@
         </div>
         <div class="yui3-u-3-4">
                 <div id="api-options">
-        Show:
+        Mostrar:
         <label for="api-show-inherited">
             <input type="checkbox" id="api-show-inherited" checked>
             Herdado
@@ -102,7 +112,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ATEngine Class</h1>
+                        <h1>Classe ATEngine</h1>
 <div class="box meta">
     
 
@@ -117,13 +127,26 @@
     
 
     
+        <p>Disponível desde 0.0.1</p>
+    
 </div>
 
 
 
 <div class="box intro">
     <p>É a raiz da estrutura da biblioteca
-Configura-se o ambiente, e criam-se as cenas usando esta classe</p>
+Configura-se o ambiente, e criam-se as cenas usando esta classe.
+Você deve usar da seguinte forma:</p>
+<pre class="code prettyprint"><code>var engine = new ATEngine(&quot;canvas_id&quot;);
+engine.carregarShaders({ATMaterialCor:[&quot;ArquivoVShader.glsl&quot;, &quot;ArquivoFShader.glsl&quot;]});
+engine.pronto(function(){
+   var cena = engine.getCena();
+   var camera = engine.getCamera();
+
+   // Construa a cena aqui
+
+   cena.desenhar(camera);
+});</code></pre>
 
 </div>
 
@@ -169,6 +192,8 @@ Configura-se o ambiente, e criam-se as cenas usando esta classe</p>
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -254,6 +279,13 @@ Configura-se o ambiente, e criam-se as cenas usando esta classe</p>
                     <h3>Properties</h3>
 
                     <ul class="index-list properties">
+                        
+                            <li class="index-item property private">
+                                <a href="#property_cameras">cameras</a>
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item property private">
                                 <a href="#property_canvas">canvas</a>
@@ -353,7 +385,7 @@ Configura-se o ambiente, e criam-se as cenas usando esta classe</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l58"><code>ATEngine.js:58</code></a>
+        <a href="../files/ATEngine.js.html#l85"><code>ATEngine.js:85</code></a>
         
         </p>
 
@@ -446,7 +478,7 @@ onde serão usados para renderizar os objetos</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l94"><code>ATEngine.js:94</code></a>
+        <a href="../files/ATEngine.js.html#l121"><code>ATEngine.js:121</code></a>
         
         </p>
 
@@ -536,7 +568,7 @@ executa a função passada como parâmetro</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l84"><code>ATEngine.js:84</code></a>
+        <a href="../files/ATEngine.js.html#l111"><code>ATEngine.js:111</code></a>
         
         </p>
 
@@ -626,7 +658,7 @@ executa a função passada como parâmetro</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l107"><code>ATEngine.js:107</code></a>
+        <a href="../files/ATEngine.js.html#l134"><code>ATEngine.js:134</code></a>
         
         </p>
 
@@ -708,7 +740,7 @@ executa a função passada como parâmetro</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l123"><code>ATEngine.js:123</code></a>
+        <a href="../files/ATEngine.js.html#l150"><code>ATEngine.js:150</code></a>
         
         </p>
 
@@ -741,6 +773,55 @@ despacha um evento interno que será ouvido pela função pronta
                 <h2 class="off-left">Propriedades</h2>
 
                 
+                    <div id="property_cameras" class="property item private">
+    <h3 class="name"><code>cameras</code></h3>
+    <span class="type">Array<ATCamera></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/ATEngine.js.html#l64"><code>ATEngine.js:64</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Lista de câmeras. Por padrão a engine provê 
+uma câmera. Pode-se usar a mesma câmera para 
+diferentes cenas.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="property_canvas" class="property item private">
     <h3 class="name"><code>canvas</code></h3>
     <span class="type">HTMLCanvas</span>
@@ -766,7 +847,7 @@ despacha um evento interno que será ouvido pela função pronta
             
         
         
-        <a href="../files/ATEngine.js.html#l26"><code>ATEngine.js:26</code></a>
+        <a href="../files/ATEngine.js.html#l41"><code>ATEngine.js:41</code></a>
         
         </p>
 
@@ -813,7 +894,7 @@ despacha um evento interno que será ouvido pela função pronta
             
         
         
-        <a href="../files/ATEngine.js.html#l40"><code>ATEngine.js:40</code></a>
+        <a href="../files/ATEngine.js.html#l56"><code>ATEngine.js:56</code></a>
         
         </p>
 
@@ -860,7 +941,7 @@ despacha um evento interno que será ouvido pela função pronta
             
         
         
-        <a href="../files/ATEngine.js.html#l12"><code>ATEngine.js:12</code></a>
+        <a href="../files/ATEngine.js.html#l27"><code>ATEngine.js:27</code></a>
         
         </p>
 
@@ -870,7 +951,7 @@ despacha um evento interno que será ouvido pela função pronta
     </div>
 
     <div class="description">
-        <p>Referência a si mesma (o this não funciona bem em funções assíncronas)</p>
+        <p>Referência a si mesma (o <code>this</code> não funciona bem em funções assíncronas)</p>
 
     </div>
 
@@ -907,7 +988,7 @@ despacha um evento interno que será ouvido pela função pronta
             
         
         
-        <a href="../files/ATEngine.js.html#l33"><code>ATEngine.js:33</code></a>
+        <a href="../files/ATEngine.js.html#l48"><code>ATEngine.js:48</code></a>
         
         </p>
 
@@ -954,7 +1035,7 @@ despacha um evento interno que será ouvido pela função pronta
             
         
         
-        <a href="../files/ATEngine.js.html#l19"><code>ATEngine.js:19</code></a>
+        <a href="../files/ATEngine.js.html#l34"><code>ATEngine.js:34</code></a>
         
         </p>
 
@@ -1001,7 +1082,7 @@ despacha um evento interno que será ouvido pela função pronta
             
         
         
-        <a href="../files/ATEngine.js.html#l47"><code>ATEngine.js:47</code></a>
+        <a href="../files/ATEngine.js.html#l74"><code>ATEngine.js:74</code></a>
         
         </p>
 

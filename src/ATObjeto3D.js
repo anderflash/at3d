@@ -1,23 +1,18 @@
 /**
-* Representação da Câmera em uma cena
+* Objeto consistindo do material (cor, textura...) 
+* e sua geometria (com posições, normais...)
 * @class ATObjeto3D
 * @constructor
+* @beta
+* @since 0.0.1
 */
 function ATObjeto3D()
 {
-  this.material = null;
-  this.posicoes= [];
-  this.normais = [];
-
-  this.buffer
+  var material = null;
+  var geometria = null;
   
-  this.lerOBJ = function()
+  this.lerOBJ = function(nome)
   {
     
   }
-}
-
-function ATObjeto3D()
-{
-  
 }

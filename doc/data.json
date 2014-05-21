@@ -28,11 +28,38 @@
             "fors": {},
             "namespaces": {}
         },
+        "ATEvent.js": {
+            "name": "ATEvent.js",
+            "modules": {},
+            "classes": {
+                "ATEvent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "ATFragmentShader.js": {
             "name": "ATFragmentShader.js",
             "modules": {},
             "classes": {
                 "ATFragmentShader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "ATGeometry.js": {
+            "name": "ATGeometry.js",
+            "modules": {},
+            "classes": {
+                "ATGeometry": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "ATKeyboard.js": {
+            "name": "ATKeyboard.js",
+            "modules": {},
+            "classes": {
+                "ATKeyboard": 1
             },
             "fors": {},
             "namespaces": {}
@@ -64,6 +91,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "ATMouse.js": {
+            "name": "ATMouse.js",
+            "modules": {},
+            "classes": {
+                "ATMouse": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "ATObjeto3D.js": {
             "name": "ATObjeto3D.js",
             "modules": {},
@@ -91,6 +127,22 @@
             "fors": {},
             "namespaces": {}
         },
+        "ATTrackball.js": {
+            "name": "ATTrackball.js",
+            "modules": {},
+            "classes": {
+                "ATTrackball": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "ATUtils.js": {
+            "name": "ATUtils.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "ATVertexShader.js": {
             "name": "ATVertexShader.js",
             "modules": {},
@@ -114,7 +166,9 @@
             "file": "ATCamera.js",
             "line": 1,
             "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATCena3D": {
             "name": "ATCena3D",
@@ -127,7 +181,9 @@
             "file": "ATCena3D.js",
             "line": 1,
             "description": "Onde coleciona os objetos para exibição.<br>\nPodes criar cenas para diferentes contextos<br>\nPor enquanto os objetos são associados a apenas uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATEngine": {
             "name": "ATEngine",
@@ -139,8 +195,25 @@
             "extension_for": [],
             "file": "ATEngine.js",
             "line": 1,
-            "description": "É a raiz da estrutura da biblioteca\nConfigura-se o ambiente, e criam-se as cenas usando esta classe",
-            "is_constructor": 1
+            "description": "É a raiz da estrutura da biblioteca\nConfigura-se o ambiente, e criam-se as cenas usando esta classe.\nVocê deve usar da seguinte forma:\n\n    var engine = new ATEngine(\"canvas_id\");\n    engine.carregarShaders({ATMaterialCor:[\"ArquivoVShader.glsl\", \"ArquivoFShader.glsl\"]});\n    engine.pronto(function(){\n       var cena = engine.getCena();\n       var camera = engine.getCamera();\n\n       // Construa a cena aqui\n\n       cena.desenhar(camera);\n    });",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
+        },
+        "ATEvent": {
+            "name": "ATEvent",
+            "shortname": "ATEvent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "ATEvent.js",
+            "line": 1,
+            "description": "Classe que será despachada para eventos internos da engine.",
+            "extends": "{Event}",
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATFragmentShader": {
             "name": "ATFragmentShader",
@@ -153,7 +226,40 @@
             "file": "ATFragmentShader.js",
             "line": 1,
             "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "extends": "ATShader",
+            "beta": 1,
+            "since": "0.0.1"
+        },
+        "ATGeometry": {
+            "name": "ATGeometry",
+            "shortname": "ATGeometry",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "ATGeometry.js",
+            "line": 1,
+            "description": "Abstração de Geometria",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
+        },
+        "ATKeyboard": {
+            "name": "ATKeyboard",
+            "shortname": "ATKeyboard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "ATKeyboard.js",
+            "line": 1,
+            "description": "Controlador de Teclado",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATMaterial": {
             "name": "ATMaterial",
@@ -165,8 +271,10 @@
             "extension_for": [],
             "file": "ATMaterial.js",
             "line": 1,
-            "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "description": "Abstração para materiais. Você pode criar diferentes materiais além do tradicional {{#crossLink \"ATMaterialCor\"}}{{/crossLink}} e {{#crossLink \"ATMaterialTextura\"}}{{/crossLink}}.",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATMaterialCor": {
             "name": "ATMaterialCor",
@@ -179,7 +287,9 @@
             "file": "ATMaterialCor.js",
             "line": 1,
             "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATMaterialTextura": {
             "name": "ATMaterialTextura",
@@ -192,7 +302,25 @@
             "file": "ATMaterialTextura.js",
             "line": 1,
             "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "extends": "ATMaterial",
+            "beta": 1,
+            "since": "0.0.1"
+        },
+        "ATMouse": {
+            "name": "ATMouse",
+            "shortname": "ATMouse",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "ATMouse.js",
+            "line": 1,
+            "description": "Controlador de Mouse",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATObjeto3D": {
             "name": "ATObjeto3D",
@@ -204,8 +332,10 @@
             "extension_for": [],
             "file": "ATObjeto3D.js",
             "line": 1,
-            "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "description": "Objeto consistindo do material (cor, textura...) \ne sua geometria (com posições, normais...)",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATShader": {
             "name": "ATShader",
@@ -218,7 +348,9 @@
             "file": "ATShader.js",
             "line": 1,
             "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATShaderProgram": {
             "name": "ATShaderProgram",
@@ -231,7 +363,24 @@
             "file": "ATShaderProgram.js",
             "line": 1,
             "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
+        },
+        "ATTrackball": {
+            "name": "ATTrackball",
+            "shortname": "ATTrackball",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "ATTrackball.js",
+            "line": 1,
+            "description": "Simulação de Trackball",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
         },
         "ATVertexShader": {
             "name": "ATVertexShader",
@@ -244,14 +393,17 @@
             "file": "ATVertexShader.js",
             "line": 1,
             "description": "Representação da Câmera em uma cena",
-            "is_constructor": 1
+            "is_constructor": 1,
+            "extends": "ATShader",
+            "beta": 1,
+            "since": "0.0.1"
         }
     },
     "classitems": [
         {
             "file": "ATEngine.js",
-            "line": 12,
-            "description": "Referência a si mesma (o this não funciona bem em funções assíncronas)",
+            "line": 27,
+            "description": "Referência a si mesma (o `this` não funciona bem em funções assíncronas)",
             "access": "private",
             "tagname": "",
             "itemtype": "property",
@@ -261,7 +413,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 19,
+            "line": 34,
             "description": "Se houver alguma chamada assíncrona, espere-a",
             "access": "private",
             "tagname": "",
@@ -272,7 +424,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 26,
+            "line": 41,
             "description": "Acesso ao canvas",
             "access": "private",
             "tagname": "",
@@ -283,7 +435,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 33,
+            "line": 48,
             "description": "Acesso ao contexto webgl",
             "access": "private",
             "tagname": "",
@@ -294,7 +446,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 40,
+            "line": 56,
             "description": "Lista de cenas para desenhar",
             "access": "private",
             "tagname": "",
@@ -305,7 +457,18 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 47,
+            "line": 64,
+            "description": "Lista de câmeras. Por padrão a engine provê \numa câmera. Pode-se usar a mesma câmera para \ndiferentes cenas.",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "cameras",
+            "type": "Array<ATCamera>",
+            "class": "ATEngine"
+        },
+        {
+            "file": "ATEngine.js",
+            "line": 74,
             "description": "Lista de programas de shaders",
             "access": "private",
             "tagname": "",
@@ -316,7 +479,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 58,
+            "line": 85,
             "description": "Recebe os arquivos que contém os shaders para os materiais, \nonde serão usados para renderizar os objetos",
             "itemtype": "method",
             "name": "carregarShaders",
@@ -331,7 +494,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 84,
+            "line": 111,
             "description": "Quando todas as tarefas da engine estiverem prontas,\nexecuta a função passada como parâmetro",
             "itemtype": "method",
             "name": "pronta",
@@ -346,7 +509,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 94,
+            "line": 121,
             "description": "Quando todas as tarefas da engine estiverem prontas,\nexecuta a função passada como parâmetro",
             "itemtype": "method",
             "name": "criarCena",
@@ -361,7 +524,7 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 107,
+            "line": 134,
             "description": "Quando todas as tarefas da engine estiverem prontas,\nexecuta a função passada como parâmetro",
             "itemtype": "method",
             "name": "removerCena",
@@ -375,14 +538,62 @@
         },
         {
             "file": "ATEngine.js",
-            "line": 123,
+            "line": 150,
             "description": "Quando todas as tarefas da engine estiverem prontas,\ndespacha um evento interno que será ouvido pela função pronta\n(se executada anteriormente)",
             "itemtype": "method",
             "name": "verificarPendencias",
             "access": "private",
             "tagname": "",
             "class": "ATEngine"
+        },
+        {
+            "file": "ATShader.js",
+            "line": 10,
+            "description": "Caminho do Shader",
+            "itemtype": "property",
+            "name": "caminho",
+            "type": "{String}",
+            "class": "ATShader"
+        },
+        {
+            "file": "ATShaderProgram.js",
+            "line": 10,
+            "description": "Guarda o shader de vértices do programa",
+            "itemtype": "property",
+            "name": "vShader",
+            "type": "ATVertexShader",
+            "class": "ATShaderProgram"
+        },
+        {
+            "file": "ATShaderProgram.js",
+            "line": 16,
+            "description": "Guarda o shader de fragmentos do programa",
+            "itemtype": "property",
+            "name": "fShader",
+            "type": "ATFragmentShader",
+            "class": "ATShaderProgram"
+        },
+        {
+            "file": "ATShaderProgram.js",
+            "line": 23,
+            "description": "Guarda o shader de vértices do programa",
+            "itemtype": "method",
+            "name": "carregarShaders",
+            "class": "ATShaderProgram"
+        },
+        {
+            "file": "ATUtils.js",
+            "line": 1,
+            "description": "Classe para funções que são externos às classes da engine\nque servirão como ferramentas auxiliares",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATVertexShader"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "Missing item type\nClasse para funções que são externos às classes da engine\nque servirão como ferramentas auxiliares",
+            "line": " ATUtils.js:1"
+        }
+    ]
 }
