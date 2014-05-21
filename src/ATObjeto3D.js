@@ -1,3 +1,8 @@
+/**
+* Representação da Câmera em uma cena
+* @class ATObjeto3D
+* @constructor
+*/
 function ATObjeto3D()
 {
   this.material = null;

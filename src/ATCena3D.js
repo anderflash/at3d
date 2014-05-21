@@ -1,6 +1,14 @@
+/**
+* Onde coleciona os objetos para exibição.<br>
+* Podes criar cenas para diferentes contextos<br>
+* Por enquanto os objetos são associados a apenas uma cena
+* @class ATCena3D
+* @constructor
+*/
 function ATCena3D()
 {
   var objetos = [];
+  
   
   this.criarObjeto;
   this.removerObjeto;
