@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>ATEvent.js</title>
+    <title>src/ATShaderProgram.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,24 +112,143 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: ATEvent.js</h1>
+                        <h1 class="file-heading">File: src/ATShaderProgram.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-* Classe que será despachada para eventos internos da engine.
-* @class ATEvent
-* @extends {Event}
+* Representação da Câmera em uma cena
+* @class ATShaderProgram
+* @constructor
 * @beta
 * @since 0.0.1
 */
-function ATEvent()
+function ATShaderProgram(nome, gl)
 {
+  /**
+  * Guarda o shader de vértices do programa
+  * @property vShader
+  * @type ATVertexShader
+  */
+  var vShader;
+  /**
+  * Guarda o shader de fragmentos do programa
+  * @property fShader
+  * @type ATFragmentShader
+  */
+  var fShader;
   
+  var atributos = {};
+  var uniforms = {};
+  
+  var codigos = [];
+  
+  var FLOAT = 1;
+  var VEC2 = 2;
+  var VEC3 = 3;
+  var VEC4 = 4;
+  var MAT3 = 5;
+  var MAT4 = 6;
+  
+  /**
+  * Guarda o id do shaderprogram
+  * @property programa
+  * @type WebGLShaderProgram
+  */
+  var programa;
+  
+  var instancia = this;
+  
+  var getShader = function(shaderNome, tipo, callback)
+  {
+    var shader = gl.createShader(tipo);
+    $.get(shaderNome, function(dados)
+    {
+      gl.shaderSource(shader, dados);
+      gl.compileShader(shader);
+      codigos.push(dados);
+      callback();
+    });
+  }
+  
+  /**
+  * Carrega os shaders de vértice e fragmento e executa um callback com o resultado.
+  * É um método assíncrono, recebe o retorno executando uma função passada como parâmetro.
+  * Usado em {{#crossLink &quot;ATEngine/carregarShaders:method&quot;}}ATEngine.carregarShaders{{/crossLink}}
+  * @method carregarShaders
+  * @async
+  * @return {Object} Um objeto com as seguintes propriedades.
+  *                  - &#x60;programa&#x60;: a instância do ATShaderProgram
+  */
+  this.carregarShaders = function(vShaderNome, fShaderNome, callback)
+  {
+    vShaderCarregado = false;
+    fShaderCarregado = false;
+    vShader = getShader(vShaderNome, gl.VERTEX_SHADER, function()
+    {
+      if(fShaderCarregado) carregarPrograma();
+      else vShaderCarregado = true;
+      
+    });//$.get(gl.createShader(gl.VERTEX_SHADER);
+    fShader = getShader(fShaderNome, gl.FRAGMENT_SHADER, function()
+    {
+      if(vShaderCarregado) carregarPrograma();
+      else fShaderCarregado = true;
+    });
+    var carregarPrograma = function()
+    {
+      // Criar o programa
+      programa = gl.createProgram();
+      gl.attachShader(programa, vShader);
+      gl.attachShader(programa, fShader);
+      gl.linkProgram(programa);
+      
+      // Obter os atributos e uniforms
+      for(var k = 0 ; k &lt; codigo.length; k++)
+      {
+	var linhas = codigo[k].split(&#x27;\n&#x27;);
+	var numLinhas = linhas.length;
+	for(var i = 0 ; i &lt; numLinhas; i++)
+	{
+	  if(linhas.length &gt; 0)
+	  {
+	    var partes = linhas[i].split(&#x27; &#x27;);
+	    switch(partes[0])
+	    {
+	      case &quot;attribute&quot;:
+		atributos[partes[2]] = [gl.getAttribLocation(programa, partes[2]),
+					parseInt(partes[1].substring(3,1))];
+	      break;
+	      case &quot;uniform&quot;:
+		uniforms[partes[2]] = [gl.getUniformLocation(programa, partes[2])];
+		switch(partes[1])
+		{
+		  case &quot;float&quot;:uniforms[partes[2]].push(FLOAT);
+		  break;
+		  case &quot;mat3&quot;: uniforms[partes[2]].push(MAT3);
+		  break;
+		  case &quot;mat4&quot;: uniforms[partes[2]].push(MAT4);
+		  break;
+		  case &quot;vec2&quot;: uniforms[partes[2]].push(VEC2);
+		  break;
+		  case &quot;vec3&quot;: uniforms[partes[2]].push(VEC3);
+		  break;
+		  case &quot;vec4&quot;: uniforms[partes[2]].push(VEC4);
+		  break;
+		}
+	      break;
+	    }
+	  }
+	}
+      }
+      callback({programa:instancia});
+    };
+  };
+  this.usar = function()
+  {
+    
+  };
 }
-ATEvent.ERRO = &#x27;erro&#x27;;
-ATEvent.COMPLETO = &#x27;completo&#x27;;
-ATUtils.inherits(ATEvent, Event);
     </pre>
 </div>
 

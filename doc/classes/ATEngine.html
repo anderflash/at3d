@@ -120,7 +120,7 @@
 
     
         <div class="foundat">
-            Definido em: <a href="../files/ATEngine.js.html#l1"><code>ATEngine.js:1</code></a>
+            Definido em: <a href="../files/src_ATEngine.js.html#l1"><code>src&#x2F;ATEngine.js:1</code></a>
         </div>
     
 
@@ -157,7 +157,17 @@ engine.pronto(function(){
     <h3 class="name"><code>ATEngine</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>nomecanvas</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -185,7 +195,7 @@ engine.pronto(function(){
             
         
         
-        <a href="../files/ATEngine.js.html#l1"><code>ATEngine.js:1</code></a>
+        <a href="../files/src_ATEngine.js.html#l1"><code>src&#x2F;ATEngine.js:1</code></a>
         
         </p>
 
@@ -201,6 +211,30 @@ engine.pronto(function(){
         
     </div>
 
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">nomecanvas</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>a id do canvas que será usada para obter o contexto</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -243,7 +277,21 @@ engine.pronto(function(){
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_criarCamera">criarCamera</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_criarCena">criarCena</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_fullScreen">fullScreen</a>
 
                                 
                                 
@@ -373,6 +421,8 @@ engine.pronto(function(){
     
 
     
+        <span class="flag async">async</span>
+    
 
     <div class="meta">
         
@@ -385,7 +435,7 @@ engine.pronto(function(){
             
         
         
-        <a href="../files/ATEngine.js.html#l85"><code>ATEngine.js:85</code></a>
+        <a href="../files/src_ATEngine.js.html#l120"><code>src&#x2F;ATEngine.js:120</code></a>
         
         </p>
 
@@ -393,11 +443,14 @@ engine.pronto(function(){
         
 
         
+            <p>Disponível desde 0.0.1</p>
+        
     </div>
 
     <div class="description">
         <p>Recebe os arquivos que contém os shaders para os materiais, 
-onde serão usados para renderizar os objetos</p>
+onde serão usados para renderizar os objetos. Além disso,
+tentará obter as referências aos atributos e uniforms</p>
 
     </div>
 
@@ -420,6 +473,108 @@ onde serão usados para renderizar os objetos</p>
        classes dos materiais e os valores são
        listas com os nomes dos arquivos de 
        shaders</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Exemplo:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>engine.carregarShaders({ATMaterialCor    :[&quot;vshadercor.glsl&quot;,&quot;fshadercor.glsl&quot;], 
+                        ATMaterialTextura:[&quot;vshadertex.glsl&quot;,&quot;fshadertex.glsl&quot;]});</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_criarCamera" class="method item">
+    <h3 class="name"><code>criarCamera</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>nome</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATEngine.js.html#l188"><code>src&#x2F;ATEngine.js:188</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Cria uma câmera para ser usada em uma cena
+executa a função passada como parâmetro</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">nome</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>O nome da câmera</p>
 
                     </div>
 
@@ -478,13 +633,15 @@ onde serão usados para renderizar os objetos</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l121"><code>ATEngine.js:121</code></a>
+        <a href="../files/src_ATEngine.js.html#l171"><code>src&#x2F;ATEngine.js:171</code></a>
         
         </p>
 
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -509,7 +666,101 @@ executa a função passada como parâmetro</p>
                     
 
                     <div class="param-description">
-                        <p>a função que será executada quando todas as pendências forem concluídas</p>
+                        <p>O nome da cena</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_fullScreen" class="method item">
+    <h3 class="name"><code>fullScreen</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>habilitado</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATEngine.js.html#l223"><code>src&#x2F;ATEngine.js:223</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Quando habilitado, o canvas redimensionar-se-á para toda a janela, sendo sincronizada a qualquer mudança da janela.
+<strong>OBS</strong>: é necessário ver como melhorar essa função para aceitar espaços para outros elementos da página, como se
+fosse um layout líquido.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">habilitado</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Se o valor é <em>true</em> então o canvas será redimensionado e os eventos de redimensionamento 
+                 da janela serão rastreadas. Se o valor é <em>false</em>, então o redimensionamento não estará</p>
 
                     </div>
 
@@ -568,13 +819,15 @@ executa a função passada como parâmetro</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l111"><code>ATEngine.js:111</code></a>
+        <a href="../files/src_ATEngine.js.html#l159"><code>src&#x2F;ATEngine.js:159</code></a>
         
         </p>
 
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -658,13 +911,15 @@ executa a função passada como parâmetro</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l134"><code>ATEngine.js:134</code></a>
+        <a href="../files/src_ATEngine.js.html#l205"><code>src&#x2F;ATEngine.js:205</code></a>
         
         </p>
 
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -740,13 +995,15 @@ executa a função passada como parâmetro</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l150"><code>ATEngine.js:150</code></a>
+        <a href="../files/src_ATEngine.js.html#l100"><code>src&#x2F;ATEngine.js:100</code></a>
         
         </p>
 
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -798,12 +1055,14 @@ despacha um evento interno que será ouvido pela função pronta
             
         
         
-        <a href="../files/ATEngine.js.html#l64"><code>ATEngine.js:64</code></a>
+        <a href="../files/src_ATEngine.js.html#l75"><code>src&#x2F;ATEngine.js:75</code></a>
         
         </p>
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -847,17 +1106,19 @@ diferentes cenas.</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l41"><code>ATEngine.js:41</code></a>
+        <a href="../files/src_ATEngine.js.html#l46"><code>src&#x2F;ATEngine.js:46</code></a>
         
         </p>
 
         
 
         
+            <p>Disponível desde 0.0.1</p>
+        
     </div>
 
     <div class="description">
-        <p>Acesso ao canvas</p>
+        <p>Referência ao canvas usado para desenhar o objeto</p>
 
     </div>
 
@@ -894,12 +1155,14 @@ diferentes cenas.</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l56"><code>ATEngine.js:56</code></a>
+        <a href="../files/src_ATEngine.js.html#l65"><code>src&#x2F;ATEngine.js:65</code></a>
         
         </p>
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -941,12 +1204,14 @@ diferentes cenas.</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l27"><code>ATEngine.js:27</code></a>
+        <a href="../files/src_ATEngine.js.html#l28"><code>src&#x2F;ATEngine.js:28</code></a>
         
         </p>
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -988,12 +1253,14 @@ diferentes cenas.</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l48"><code>ATEngine.js:48</code></a>
+        <a href="../files/src_ATEngine.js.html#l55"><code>src&#x2F;ATEngine.js:55</code></a>
         
         </p>
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -1035,12 +1302,14 @@ diferentes cenas.</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l34"><code>ATEngine.js:34</code></a>
+        <a href="../files/src_ATEngine.js.html#l37"><code>src&#x2F;ATEngine.js:37</code></a>
         
         </p>
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 
@@ -1082,12 +1351,14 @@ diferentes cenas.</p>
             
         
         
-        <a href="../files/ATEngine.js.html#l74"><code>ATEngine.js:74</code></a>
+        <a href="../files/src_ATEngine.js.html#l87"><code>src&#x2F;ATEngine.js:87</code></a>
         
         </p>
 
         
 
+        
+            <p>Disponível desde 0.0.1</p>
         
     </div>
 

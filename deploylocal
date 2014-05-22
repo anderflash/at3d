@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cp -R demos $HOME/public_html/at3d/
+cp -R dist $HOME/public_html/at3d/

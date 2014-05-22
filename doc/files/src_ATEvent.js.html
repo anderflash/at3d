@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>ATFragmentShader.js</title>
+    <title>src/ATEvent.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,22 +112,24 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: ATFragmentShader.js</h1>
+                        <h1 class="file-heading">File: src/ATEvent.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-* Representação da Câmera em uma cena
-* @class ATFragmentShader
-* @constructor
-* @extends ATShader
+* Classe que será despachada para eventos internos da engine.
+* @class ATEvent
+* @extends {Event}
 * @beta
 * @since 0.0.1
 */
-function ATFragmentShader()
+function ATEvent()
 {
+  
 }
-ATUtils.inherits(ATFragmentShader, ATShader);
+ATEvent.ERRO = &#x27;erro&#x27;;
+ATEvent.COMPLETO = &#x27;completo&#x27;;
+ATUtils.inherits(ATEvent, Event);
     </pre>
 </div>
 

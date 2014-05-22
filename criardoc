@@ -1,2 +1,2 @@
 #!/bin/sh
-yuidoc . -o ../doc --themedir ../themes
+yuidoc . -o doc --themedir themes

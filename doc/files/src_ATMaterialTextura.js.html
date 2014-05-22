@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>ATShader.js</title>
+    <title>src/ATMaterialTextura.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,26 +112,23 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: ATShader.js</h1>
+                        <h1 class="file-heading">File: src/ATMaterialTextura.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
 * Representação da Câmera em uma cena
-* @class ATShader
+* @class ATMaterialTextura
 * @constructor
+* @extends ATMaterial
 * @beta
 * @since 0.0.1
 */
-function ATShader(caminho)
+function ATMaterialTextura()
 {
-  /**
-  * Caminho do Shader
-  * @property caminho
-  * @type {String}
-  */ 
-  this.caminho = caminho;
+  
 }
+ATUtils.inherits(ATMaterialTextura, ATMaterial);
     </pre>
 </div>
 

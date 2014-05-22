@@ -1,0 +1,10 @@
+{
+  "name": "@3D", 
+  "files": [ { "git": 1 } ],
+  "build": {
+    "directory": "build",
+    "build": "make all",
+    "clean": "make clean",
+    "install": "make install"
+  }
+}
