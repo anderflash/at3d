@@ -1,0 +1,3 @@
+#!/bin/sh
+
+uglifyjs src/ATUtils.js src/*.js -b -o dist/at3d.js

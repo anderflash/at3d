@@ -26,7 +26,8 @@ function ATEngine(nomecanvas)
    * VARIÁVEIS PRIVADAS
    --------------------*/
   /**
-  * Referência a si mesma (o `this` não funciona bem em funções assíncronas)
+  * Referência a si mesma (o `this` não funciona bem em 
+  * funções assíncronas)
   * @private
   * @property engine
   * @type ATEngine
@@ -60,8 +61,8 @@ function ATEngine(nomecanvas)
   * @beta
   * @since 0.0.1
   */
-  var gl = this.canvas.getContext("webgl") || 
-           this.canvas.getContext("experimental-webgl");
+  var gl = canvas.getContext("webgl") || 
+           canvas.getContext("experimental-webgl");
   /**
   * Lista de cenas para desenhar
   * @private
@@ -99,8 +100,8 @@ function ATEngine(nomecanvas)
    * -------------------*/
   /**
   * Quando todas as tarefas da engine estiverem prontas,
-  * despacha um evento interno que será ouvido pela função pronta
-  * (se executada anteriormente)
+  * despacha um evento interno que será ouvido pela função
+  * pronta (se executada anteriormente)
   * @method verificarPendencias
   * @private
   * @beta
@@ -108,10 +109,10 @@ function ATEngine(nomecanvas)
   */
   var verificarPendencias = function()
   {
-    for(var tipo in engine.pendenciasAssincronas)
-      if(!engine.pendenciasAssincronas[tipo]) 
+    for(var tipo in pendenciasAssincronas)
+      if(!pendenciasAssincronas[tipo]) 
 	return;
-    engine.dispatchEvent(new Event("pronta"));
+    this.dispatchEvent({type:"pronta"});
   }
   
   /* ---------------------
@@ -141,17 +142,19 @@ function ATEngine(nomecanvas)
       // Criar um ATShaderProgram
       var programa = new ATShaderProgram(material, gl);
       programasShaders[material] = programa;
-      this.pendenciasAssincronas[programa] = false;
+      pendenciasAssincronas[programa.getNome()] = false;
       
       // Obter o nome dos shaders
       var vShaderNome = config[material][0];
       var fShaderNome = config[material][1];
       
+      var instancia = this;
+      
       // Carregar os shaders de forma assíncrona
       programa.carregarShaders(vShaderNome, fShaderNome, function(resultado)
       {
-	programasShaders[resultado.programa] = true;
-	verificarPendencias();
+        pendenciasAssincronas[resultado.programa.getNome()] = true;
+        verificarPendencias.apply(instancia,null);
       });
     }
   }
@@ -160,12 +163,13 @@ function ATEngine(nomecanvas)
   * Quando todas as tarefas da engine estiverem prontas,
   * executa a função passada como parâmetro
   * @method pronta
-  * @param {Function} funcao a função que será executada quando todas as pendências forem concluídas
+  * @param {Function} funcao a função que será executada 
+  *          quando todas as pendências forem concluídas
   * @beta
   * @since 0.0.1
   */
   this.pronta = function(funcao){
-    this.addEventListener("pronta",function(e){funcao();});
+    this.addEventListener("pronta",function(){funcao();});
   }
   
   /**
@@ -182,8 +186,6 @@ function ATEngine(nomecanvas)
     cenas.push(cena);
     return cena;
   }
-  // Criar pelo menos uma cena
-  this.criarCena("cena");
   
   /**
   * Cria uma câmera para ser usada em uma cena
@@ -199,14 +201,13 @@ function ATEngine(nomecanvas)
     cameras.push(camera);
     return camera;
   }
-  // Criar pelo menos uma camera
-  this.criarCamera("camera");
   
   /**
   * Quando todas as tarefas da engine estiverem prontas,
   * executa a função passada como parâmetro
   * @method removerCena
-  * @param ATCena3D nome a função que será executada quando todas as pendências forem concluídas
+  * @param ATCena3D nome a função que será executada 
+  *        quando todas as pendências forem concluídas
   * @beta
   * @since 0.0.1
   */
@@ -221,17 +222,22 @@ function ATEngine(nomecanvas)
   }
   
   /**
-  * Quando habilitado, o canvas redimensionar-se-á para toda a janela, sendo sincronizada a qualquer mudança da janela.
-  * __OBS__: é necessário ver como melhorar essa função para aceitar espaços para outros elementos da página, como se
+  * Quando habilitado, o canvas redimensionar-se-á para toda a 
+  * janela, sendo sincronizada a qualquer mudança da janela.
+  * __OBS__: é necessário ver como melhorar essa função para 
+  * aceitar espaços para outros elementos da página, como se
   * fosse um layout líquido.
   * @method fullScreen
-  * @param {Boolean} habilitado Se o valor é _true_ então o canvas será redimensionado e os eventos de redimensionamento 
-  *                  da janela serão rastreadas. Se o valor é _false_, então o redimensionamento não estará
+  * @param {Boolean} habilitado Se o valor é _true_ então o canvas 
+  *                  será redimensionado e os eventos de redimensionamento 
+  *                  da janela serão rastreadas. Se o valor é _false_, 
+  *                  então o redimensionamento não estará
   * @beta
   * @since 0.0.1
   */
   this.fullScreen = function(habilitado)
   {
     
-  } 
+  }
 }
+ATUtils.EventDispatcher.prototype.apply( ATEngine.prototype );

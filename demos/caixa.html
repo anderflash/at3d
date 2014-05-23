@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="../lib/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="../lib/gl-matrix-min.js"></script>
-    <script type="text/javascript" src="../dist/at3d.min.js"></script>
+    <script type="text/javascript" src="../dist/at3d.js"></script>
     <script type="text/javascript">
       $(function(){
 	try
@@ -16,23 +16,23 @@
 	    ATMaterialCor    :["vcorshader.glsl"        ,"fcorshader.glsl"],
 	    ATMaterialTextura:["vtexturashader.glsl","ftexturashader.glsl"]});
 	  // Obter os atributos e uniforms
-	  engine.obterAtributosEUniforms("cor",
-	    ["aPosition","aColor","aNormal"],
-	    ["uMMatrix","uVMatrix","uPMatrix","uNMatrix"]);
-	  engine.obterAtributosEUniforms("textura",
-	    ["aPosition","aTexture","aNormal"],
-	    ["uMMatrix","uVMatrix","uPMatrix","uNMatrix"]);
+// 	  engine.obterAtributosEUniforms("cor",
+// 	    ["aPosition","aColor","aNormal"],
+// 	    ["uMMatrix","uVMatrix","uPMatrix","uNMatrix"]);
+// 	  engine.obterAtributosEUniforms("textura",
+// 	    ["aPosition","aTexture","aNormal"],
+// 	    ["uMMatrix","uVMatrix","uPMatrix","uNMatrix"]);
 	  engine.pronta(function(){
 	    // Criar uma cena
-	    var cena = engine.criarCena("cena1");
+	    var cena = engine.getCena();
+	    var camera = engine.getCamera();
 	    // Carregar um objeto na cena
-	    cena.carregarOBJ("caixa");
+	    cena.carregarOBJ("caixa.obj");
 	    // Quando a cena estiver pronta, desenhar
 	    cena.pronta(function(){
 	      cena.desenhar();
 	    });
 	  });
-	  
 	}catch(e){
 	
 	}

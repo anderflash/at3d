@@ -31,6 +31,7 @@ function ATShaderProgram(nome, gl)
   var VEC4 = 4;
   var MAT3 = 5;
   var MAT4 = 6;
+  var SAMPLER2D = 6;
   
   /**
   * Guarda o id do shaderprogram
@@ -48,9 +49,14 @@ function ATShaderProgram(nome, gl)
     {
       gl.shaderSource(shader, dados);
       gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
+	throw "Não pode compilar shader do tipo "+tipo+" :\n\n"+gl.getShaderInfoLog(shader);
       codigos.push(dados);
+      shader.codigo = dados;
+      shader.nome = shaderNome;
       callback();
     });
+    return shader;
   }
   
   /**
@@ -64,17 +70,25 @@ function ATShaderProgram(nome, gl)
   */
   this.carregarShaders = function(vShaderNome, fShaderNome, callback)
   {
-    vShaderCarregado = false;
-    fShaderCarregado = false;
+    var vShaderCarregado = false;
+    var fShaderCarregado = false;
     vShader = getShader(vShaderNome, gl.VERTEX_SHADER, function()
     {
-      if(fShaderCarregado) carregarPrograma();
+      if(fShaderCarregado) 
+      {
+	console.log(vShaderNome + "," + fShaderNome);
+	carregarPrograma();
+      }
       else vShaderCarregado = true;
       
     });//$.get(gl.createShader(gl.VERTEX_SHADER);
     fShader = getShader(fShaderNome, gl.FRAGMENT_SHADER, function()
     {
-      if(vShaderCarregado) carregarPrograma();
+      if(vShaderCarregado)
+      {
+	console.log(vShaderNome + "," + fShaderNome);
+	carregarPrograma();
+      }
       else fShaderCarregado = true;
     });
     var carregarPrograma = function()
@@ -84,38 +98,46 @@ function ATShaderProgram(nome, gl)
       gl.attachShader(programa, vShader);
       gl.attachShader(programa, fShader);
       gl.linkProgram(programa);
+      if(!gl.getProgramParameter(programa, gl.LINK_STATUS))
+      {
+	throw "Não pode compilar programa :\n\n"+gl.getProgramInfoLog(programa);
+      }
       
       // Obter os atributos e uniforms
-      for(var k = 0 ; k < codigo.length; k++)
+      for(var k = 0 ; k < codigos.length; k++)
       {
-	var linhas = codigo[k].split('\n');
+	var linhas = codigos[k].split('\n');
 	var numLinhas = linhas.length;
 	for(var i = 0 ; i < numLinhas; i++)
 	{
-	  if(linhas.length > 0)
+	  if(linhas[i].length > 0)
 	  {
 	    var partes = linhas[i].split(' ');
+	    if(partes[0] == "void") break;
+	    var variavel = partes[2].replace(";","");
 	    switch(partes[0])
 	    {
 	      case "attribute":
-		atributos[partes[2]] = [gl.getAttribLocation(programa, partes[2]),
-					parseInt(partes[1].substring(3,1))];
+		atributos[variavel] = [gl.getAttribLocation(programa, variavel),
+					parseInt(partes[1].substr(3,1))];
 	      break;
 	      case "uniform":
-		uniforms[partes[2]] = [gl.getUniformLocation(programa, partes[2])];
+		uniforms[variavel] = [gl.getUniformLocation(programa, variavel)];
 		switch(partes[1])
 		{
-		  case "float":uniforms[partes[2]].push(FLOAT);
+		  case "float":uniforms[variavel].push(FLOAT);
 		  break;
-		  case "mat3": uniforms[partes[2]].push(MAT3);
+		  case "mat3": uniforms[variavel].push(MAT3);
 		  break;
-		  case "mat4": uniforms[partes[2]].push(MAT4);
+		  case "mat4": uniforms[variavel].push(MAT4);
 		  break;
-		  case "vec2": uniforms[partes[2]].push(VEC2);
+		  case "vec2": uniforms[variavel].push(VEC2);
 		  break;
-		  case "vec3": uniforms[partes[2]].push(VEC3);
+		  case "vec3": uniforms[variavel].push(VEC3);
 		  break;
-		  case "vec4": uniforms[partes[2]].push(VEC4);
+		  case "vec4": uniforms[variavel].push(VEC4);
+		  break;
+		  case "sampler2D": uniforms[variavel].push(SAMPLER2D);
 		  break;
 		}
 	      break;
@@ -130,4 +152,8 @@ function ATShaderProgram(nome, gl)
   {
     
   };
+  this.getNome = function()
+  {
+    return nome;
+  }
 }

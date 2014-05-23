@@ -11,32 +11,89 @@ function ATCena3D()
 {
   var objetos = [];
   
-  
-  this.criarObjeto;
-  this.removerObjeto;
-  this.acoplarObjeto;
-  this.desacoplarObjeto;
-  this.desenhar;
+  /**
+  * Se houver alguma chamada assíncrona, espere-a
+  * @private
+  * @property pendenciasAssincronas
+  * @type {Object}
+  * @beta
+  * @since 0.0.1
+  */
+  var pendenciasAssincronas = {};
   
   this.criarObjeto = function(nome)
   {
     var objeto = new ATObjeto3D(nome);
     objetos.push(objeto);
   }
-  this.removerObjeto(objeto)
-  {
-    
-  }
+//   this.removerObjeto(objeto)
+//   {
+//     
+//   }
   this.acoplarObjeto = function(objeto)
   {
     if(objeto.cena != null && objeto.cena != this)
     {
-      objeto.cena.desacoplarObjeto(objeto);
-      this.objetos
+      //objeto.cena.desacoplarObjeto(objeto);
+      //this.objetos
     }
   }
-  this.desacoplarObjeto = function(objeto)
+//   this.desacoplarObjeto = function(objeto)
+//   {
+//     
+//   }
+
+	this.carregarOBJ = function(nome, caminho)
+	{
+		var objetos = [];
+		pendenciasAssincronas[nome] = false;
+		$.get(caminho, function(data)
+		{
+			var linhas = data.split('\n');
+			var numLinhas = linhas.length;
+			
+			for(var key = 0; key < numLinhas; key++)
+			{
+				var linha = linhas[key]  +'';
+				var partes = linha.split(' ');
+				switch(partes[0])
+				{
+					case "o":
+						if(objeto)
+						var objeto = new ATObjeto3D(partes[1]);
+						key = objeto.carregarOBJ(linhas, caminho, key);
+					break;
+				}
+			}
+		}
+		
+		
+		
+		var objeto = new ATObjeto3D(nome);
+		objetos.push[objeto];
+		
+		objeto.carregarOBJ(caminho, function(objeto)
+		{
+			pendenciasAssincronas[objeto.getNome()] = true;
+			verificarPendencias();
+		});
+	}
+	
+	/**
+  * Quando todas as tarefas da engine estiverem prontas,
+  * despacha um evento interno que será ouvido pela função
+  * pronta (se executada anteriormente)
+  * @method verificarPendencias
+  * @private
+  * @beta
+  * @since 0.0.1
+  */
+  var verificarPendencias = function()
   {
-    
+    for(var tipo in pendenciasAssincronas)
+      if(!pendenciasAssincronas[tipo]) 
+	return;
+    this.dispatchEvent({type:"pronta"});
   }
 }
+ATUtils.EventDispatcher.prototype.apply( ATCena3D.prototype );

@@ -2,3 +2,5 @@
 
 cp -R demos $HOME/public_html/at3d/
 cp -R dist $HOME/public_html/at3d/
+cp -R doc $HOME/public_html/at3d/
+cp -R lib $HOME/public_html/at3d/
