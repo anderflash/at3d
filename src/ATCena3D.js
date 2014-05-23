@@ -45,7 +45,6 @@ function ATCena3D()
 
 	this.carregarOBJ = function(nome, caminho)
 	{
-		var objetos = [];
 		pendenciasAssincronas[nome] = false;
 		$.get(caminho, function(data)
 		{
@@ -61,20 +60,12 @@ function ATCena3D()
 					case "o":
 						if(objeto)
 						var objeto = new ATObjeto3D(partes[1]);
+						objetos.push(objeto);
 						key = objeto.carregarOBJ(linhas, caminho, key);
 					break;
 				}
 			}
-		}
-		
-		
-		
-		var objeto = new ATObjeto3D(nome);
-		objetos.push[objeto];
-		
-		objeto.carregarOBJ(caminho, function(objeto)
-		{
-			pendenciasAssincronas[objeto.getNome()] = true;
+			pendenciasAssincronas[nome] = true;
 			verificarPendencias();
 		});
 	}

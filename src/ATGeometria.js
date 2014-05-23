@@ -1,11 +1,11 @@
 /**
 * Abstração de Geometria
-* @class ATGeometry
+* @class ATGeometria
 * @constructor
 * @beta
 * @since 0.0.1
 */
-function ATGeometry()
+function ATGeometria()
 {
 
 }
