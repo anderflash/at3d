@@ -51,7 +51,7 @@
             
                 <li><a href="../classes/ATFragmentShader.html">ATFragmentShader</a></li>
             
-                <li><a href="../classes/ATGeometry.html">ATGeometry</a></li>
+                <li><a href="../classes/ATGeometria.html">ATGeometria</a></li>
             
                 <li><a href="../classes/ATKeyboard.html">ATKeyboard</a></li>
             
@@ -61,15 +61,23 @@
             
                 <li><a href="../classes/ATMaterialTextura.html">ATMaterialTextura</a></li>
             
+                <li><a href="../classes/ATMesh.html">ATMesh</a></li>
+            
                 <li><a href="../classes/ATMouse.html">ATMouse</a></li>
             
                 <li><a href="../classes/ATObjeto3D.html">ATObjeto3D</a></li>
+            
+                <li><a href="../classes/ATRenderer.html">ATRenderer</a></li>
             
                 <li><a href="../classes/ATShader.html">ATShader</a></li>
             
                 <li><a href="../classes/ATShaderProgram.html">ATShaderProgram</a></li>
             
                 <li><a href="../classes/ATTrackball.html">ATTrackball</a></li>
+            
+                <li><a href="../classes/ATUtils.html">ATUtils</a></li>
+            
+                <li><a href="../classes/ATUtils.EventDispatcher.html">ATUtils.EventDispatcher</a></li>
             
                 <li><a href="../classes/ATVertexShader.html">ATVertexShader</a></li>
             
@@ -205,6 +213,10 @@ e sua geometria (com posições, normais...)</p>
         <li class="api-class-tab index"><a href="#index">Índice</a></li>
 
         
+            <li class="api-class-tab methods"><a href="#methods">Métodos</a></li>
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Propriedades</a></li>
         
         
         
@@ -215,7 +227,79 @@ e sua geometria (com posições, normais...)</p>
             <h2 class="off-left">Índice de Itens</h2>
 
             
+                <div class="index-section methods">
+                    <h3>Métodos</h3>
 
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_adicionarFilho">adicionarFilho</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getFilho">getFilho</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getPai">getPai</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getQtdFilhos">getQtdFilhos</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getQtdFilhos">getQtdFilhos</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_removerFilho">removerFilho</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setPai">setPai</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_visible">visible</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
             
 
             
@@ -224,7 +308,600 @@ e sua geometria (com posições, normais...)</p>
         </div>
 
         
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Métodos</h2>
 
+                
+                    <div id="method_adicionarFilho" class="method item">
+    <h3 class="name"><code>adicionarFilho</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l14"><code>src&#x2F;ATObjeto3D.js:14</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Adicionar um objeto filho (se não estiver adicionado)</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_getFilho" class="method item">
+    <h3 class="name"><code>getFilho</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>o</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l75"><code>src&#x2F;ATObjeto3D.js:75</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Obter o i-ésimo filho
+Usado na renderização</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">o</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>índice do filho</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_getPai" class="method item">
+    <h3 class="name"><code>getPai</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>objeto</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l42"><code>src&#x2F;ATObjeto3D.js:42</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Obter o ATObjeto3D pai.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">objeto</code>
+                        <span class="type"><a href="../classes/ATObjeto3D.html" class="crosslink">ATObjeto3D</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_getQtdFilhos" class="method item">
+    <h3 class="name"><code>getQtdFilhos</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l91"><code>src&#x2F;ATObjeto3D.js:91</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Obter o número total de filhos</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_getQtdFilhos" class="method item">
+    <h3 class="name"><code>getQtdFilhos</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l102"><code>src&#x2F;ATObjeto3D.js:102</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Obter o número total de filhos</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_removerFilho" class="method item">
+    <h3 class="name"><code>removerFilho</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>objeto</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l29"><code>src&#x2F;ATObjeto3D.js:29</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Remover um objeto (se for um filho)</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">objeto</code>
+                        <span class="type"><a href="../classes/ATObjeto3D.html" class="crosslink">ATObjeto3D</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setPai" class="method item">
+    <h3 class="name"><code>setPai</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>objeto</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l53"><code>src&#x2F;ATObjeto3D.js:53</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Remover um objeto (se for um filho)</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">objeto</code>
+                        <span class="type"><a href="../classes/ATObjeto3D.html" class="crosslink">ATObjeto3D</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Propriedades</h2>
+
+                
+                    <div id="property_visible" class="property item">
+    <h3 class="name"><code>visible</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATObjeto3D.js.html#l65"><code>src&#x2F;ATObjeto3D.js:65</code></a>
+        
+        </p>
+
+        
+
+        
+            <p>Disponível desde 0.0.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Está ou não visível?
+Usado na renderização</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

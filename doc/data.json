@@ -46,11 +46,11 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/ATGeometry.js": {
-            "name": "src/ATGeometry.js",
+        "src/ATGeometria.js": {
+            "name": "src/ATGeometria.js",
             "modules": {},
             "classes": {
-                "ATGeometry": 1
+                "ATGeometria": 1
             },
             "fors": {},
             "namespaces": {}
@@ -91,6 +91,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/ATMesh.js": {
+            "name": "src/ATMesh.js",
+            "modules": {},
+            "classes": {
+                "ATMesh": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/ATMouse.js": {
             "name": "src/ATMouse.js",
             "modules": {},
@@ -105,6 +114,15 @@
             "modules": {},
             "classes": {
                 "ATObjeto3D": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/ATRenderer.js": {
+            "name": "src/ATRenderer.js",
+            "modules": {},
+            "classes": {
+                "ATRenderer": 1
             },
             "fors": {},
             "namespaces": {}
@@ -139,7 +157,10 @@
         "src/ATUtils.js": {
             "name": "src/ATUtils.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "ATUtils": 1,
+                "ATUtils.EventDispatcher": 1
+            },
             "fors": {},
             "namespaces": {}
         },
@@ -238,15 +259,15 @@
             "beta": 1,
             "since": "0.0.1"
         },
-        "ATGeometry": {
-            "name": "ATGeometry",
-            "shortname": "ATGeometry",
+        "ATGeometria": {
+            "name": "ATGeometria",
+            "shortname": "ATGeometria",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "src/ATGeometry.js",
+            "file": "src/ATGeometria.js",
             "line": 1,
             "description": "Abstração de Geometria",
             "is_constructor": 1,
@@ -314,6 +335,21 @@
             "beta": 1,
             "since": "0.0.1"
         },
+        "ATMesh": {
+            "name": "ATMesh",
+            "shortname": "ATMesh",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/ATMesh.js",
+            "line": 1,
+            "description": "Objeto3D com vértices e faces",
+            "is_constructor": 1,
+            "beta": 1,
+            "since": "0.0.1"
+        },
         "ATMouse": {
             "name": "ATMouse",
             "shortname": "ATMouse",
@@ -343,6 +379,18 @@
             "is_constructor": 1,
             "beta": 1,
             "since": "0.0.1"
+        },
+        "ATRenderer": {
+            "name": "ATRenderer",
+            "shortname": "ATRenderer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/ATRenderer.js",
+            "line": 1,
+            "description": "Classe que desenhará os objetos.\nTambém se encarregará de enviar os buffers para a GPU\nAcho que as texturas também"
         },
         "ATShader": {
             "name": "ATShader",
@@ -389,6 +437,34 @@
             "beta": 1,
             "since": "0.0.1"
         },
+        "ATUtils": {
+            "name": "ATUtils",
+            "shortname": "ATUtils",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/ATUtils.js",
+            "line": 1,
+            "description": "Classe para funções que são externos às classes da engine\nque servirão como ferramentas auxiliares",
+            "beta": 1,
+            "since": "0.0.1"
+        },
+        "ATUtils.EventDispatcher": {
+            "name": "ATUtils.EventDispatcher",
+            "shortname": "ATUtils.EventDispatcher",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/ATUtils.js",
+            "line": 31,
+            "description": "Classe para despachadores de eventos",
+            "beta": 1,
+            "since": "0.0.1"
+        },
         "ATVertexShader": {
             "name": "ATVertexShader",
             "shortname": "ATVertexShader",
@@ -410,7 +486,7 @@
         {
             "file": "src/ATCamera.js",
             "line": 10,
-            "description": "Representação da Câmera em uma cena",
+            "description": "Matriz de Visualização",
             "itemtype": "property",
             "name": "vMatrix",
             "access": "private",
@@ -422,6 +498,18 @@
         {
             "file": "src/ATCamera.js",
             "line": 19,
+            "description": "Matriz de Projeção",
+            "itemtype": "property",
+            "name": "pMatrix",
+            "access": "private",
+            "tagname": "",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATCamera"
+        },
+        {
+            "file": "src/ATCamera.js",
+            "line": 28,
             "description": "Posicionar e orientar a câmera\nParâmetros intrísecos",
             "itemtype": "method",
             "name": "lookAt",
@@ -431,7 +519,7 @@
         },
         {
             "file": "src/ATCamera.js",
-            "line": 31,
+            "line": 40,
             "description": "Obter a matrix de visualização (vide padrão MVP)\nParâmetros intrísecos",
             "itemtype": "method",
             "name": "getMatrizVisualizacao",
@@ -445,7 +533,7 @@
         },
         {
             "file": "src/ATCamera.js",
-            "line": 44,
+            "line": 53,
             "description": "Obter a matrix de projeção (vide padrão MVP)\nParâmetros intrísecos",
             "itemtype": "method",
             "name": "getMatrizProjecao",
@@ -458,9 +546,40 @@
             "class": "ATCamera"
         },
         {
+            "file": "src/ATCamera.js",
+            "line": 65,
+            "description": "Obter a matrix de projeção (vide padrão MVP)\nParâmetros intrísecos",
+            "itemtype": "method",
+            "name": "getMatrizProjecao",
+            "beta": 1,
+            "return": {
+                "description": "Retorna a matrix de visualização 4x4",
+                "type": "Array"
+            },
+            "since": "0.0.1",
+            "class": "ATCamera"
+        },
+        {
+            "file": "src/ATCena3D.js",
+            "line": 15,
+            "description": "Se houver alguma chamada assíncrona, espere-a",
+            "itemtype": "method",
+            "name": "criarObjeto",
+            "params": [
+                {
+                    "name": "nome",
+                    "description": "O nome do objeto",
+                    "type": "String"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATCena3D"
+        },
+        {
             "file": "src/ATEngine.js",
             "line": 28,
-            "description": "Referência a si mesma (o `this` não funciona bem em funções assíncronas)",
+            "description": "Referência a si mesma (o `this` não funciona bem em \nfunções assíncronas)",
             "access": "private",
             "tagname": "",
             "itemtype": "property",
@@ -472,20 +591,7 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 37,
-            "description": "Se houver alguma chamada assíncrona, espere-a",
-            "access": "private",
-            "tagname": "",
-            "itemtype": "property",
-            "name": "pendenciasAssincronas",
-            "type": "{Object}",
-            "beta": 1,
-            "since": "0.0.1",
-            "class": "ATEngine"
-        },
-        {
-            "file": "src/ATEngine.js",
-            "line": 46,
+            "line": 38,
             "description": "Referência ao canvas usado para desenhar o objeto",
             "access": "private",
             "tagname": "",
@@ -498,7 +604,7 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 55,
+            "line": 47,
             "description": "Acesso ao contexto webgl",
             "access": "private",
             "tagname": "",
@@ -511,7 +617,7 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 65,
+            "line": 63,
             "description": "Lista de cenas para desenhar",
             "access": "private",
             "tagname": "",
@@ -524,7 +630,7 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 75,
+            "line": 73,
             "description": "Lista de câmeras. Por padrão a engine provê \numa câmera. Pode-se usar a mesma câmera para \ndiferentes cenas.",
             "access": "private",
             "tagname": "",
@@ -537,7 +643,7 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 87,
+            "line": 85,
             "description": "Lista de programas de shaders",
             "access": "private",
             "tagname": "",
@@ -550,19 +656,47 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 100,
-            "description": "Quando todas as tarefas da engine estiverem prontas,\ndespacha um evento interno que será ouvido pela função pronta\n(se executada anteriormente)",
+            "line": 102,
+            "description": "Retornar a cena a partir do nome. Se chamada sem parâmetro, então retorna\na primeira cena. Se não encontrar a cena, retorna null",
             "itemtype": "method",
-            "name": "verificarPendencias",
-            "access": "private",
-            "tagname": "",
+            "name": "getCena",
+            "params": [
+                {
+                    "name": "{Number}",
+                    "description": "[nome] O nome ou índice da cena. Se não vier, então retorna a primeira cena.",
+                    "type": "String"
+                }
+            ],
             "beta": 1,
             "since": "0.0.1",
+            "example": [
+                "\n    engine.getCena(); // A primeira cena\n    engine.getCena(\"cena\"); // A cena de nome \"cena\"\n    engine.getCena(2); \"A terceira cena\""
+            ],
             "class": "ATEngine"
         },
         {
             "file": "src/ATEngine.js",
-            "line": 120,
+            "line": 133,
+            "description": "Retornar a câmera a partir do nome. Se chamada sem parâmetro, então retorna\na primeira câmera. Se não encontrar a câmera, retorna null",
+            "itemtype": "method",
+            "name": "getCena",
+            "params": [
+                {
+                    "name": "{Number}",
+                    "description": "[nome] O nome ou índice da câmera. Se não vier, então retorna a primeira câmera.",
+                    "type": "String"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "example": [
+                "\n    engine.getCamera(); // A primeira câmera\n    engine.getCamera(\"camera\"); // A cena de nome \"câmera\"\n    engine.getCamera(2); \"A terceira câmera\""
+            ],
+            "class": "ATEngine"
+        },
+        {
+            "file": "src/ATEngine.js",
+            "line": 164,
             "description": "Recebe os arquivos que contém os shaders para os materiais, \nonde serão usados para renderizar os objetos. Além disso,\ntentará obter as referências aos atributos e uniforms",
             "itemtype": "method",
             "name": "carregarShaders",
@@ -583,14 +717,35 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 159,
+            "line": 205,
+            "description": "Recebe os arquivos que contém os shaders para os materiais, \nonde serão usados para renderizar os objetos. Além disso,\ntentará obter as referências aos atributos e uniforms",
+            "itemtype": "method",
+            "name": "carregarShaders",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "Um objeto cujas chaves são as \n       classes dos materiais e os valores são\n       listas com os nomes dos arquivos de \n       shaders",
+                    "type": "Object"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "async": 1,
+            "example": [
+                "\n    engine.carregarShaders({ATMaterialCor    :[\"vshadercor.glsl\",\"fshadercor.glsl\"], \n                            ATMaterialTextura:[\"vshadertex.glsl\",\"fshadertex.glsl\"]});"
+            ],
+            "class": "ATEngine"
+        },
+        {
+            "file": "src/ATEngine.js",
+            "line": 233,
             "description": "Quando todas as tarefas da engine estiverem prontas,\nexecuta a função passada como parâmetro",
             "itemtype": "method",
             "name": "pronta",
             "params": [
                 {
                     "name": "funcao",
-                    "description": "a função que será executada quando todas as pendências forem concluídas",
+                    "description": "a função que será executada \n         quando todas as pendências forem concluídas",
                     "type": "Function"
                 }
             ],
@@ -600,7 +755,7 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 171,
+            "line": 251,
             "description": "Quando todas as tarefas da engine estiverem prontas,\nexecuta a função passada como parâmetro",
             "itemtype": "method",
             "name": "criarCena",
@@ -617,7 +772,7 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 188,
+            "line": 266,
             "description": "Cria uma câmera para ser usada em uma cena\nexecuta a função passada como parâmetro",
             "itemtype": "method",
             "name": "criarCamera",
@@ -634,14 +789,14 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 205,
+            "line": 281,
             "description": "Quando todas as tarefas da engine estiverem prontas,\nexecuta a função passada como parâmetro",
             "itemtype": "method",
             "name": "removerCena",
             "params": [
                 {
                     "name": "ATCena3D",
-                    "description": "nome a função que será executada quando todas as pendências forem concluídas"
+                    "description": "nome a função que será executada \n       quando todas as pendências forem concluídas"
                 }
             ],
             "beta": 1,
@@ -650,20 +805,435 @@
         },
         {
             "file": "src/ATEngine.js",
-            "line": 223,
-            "description": "Quando habilitado, o canvas redimensionar-se-á para toda a janela, sendo sincronizada a qualquer mudança da janela.\n__OBS__: é necessário ver como melhorar essa função para aceitar espaços para outros elementos da página, como se\nfosse um layout líquido.",
+            "line": 300,
+            "description": "Quando habilitado, o canvas redimensionar-se-á para toda a \njanela, sendo sincronizada a qualquer mudança da janela.\n__OBS__: é necessário ver como melhorar essa função para \naceitar espaços para outros elementos da página, como se\nfosse um layout líquido.",
             "itemtype": "method",
             "name": "fullScreen",
             "params": [
                 {
                     "name": "habilitado",
-                    "description": "Se o valor é _true_ então o canvas será redimensionado e os eventos de redimensionamento \n                 da janela serão rastreadas. Se o valor é _false_, então o redimensionamento não estará",
+                    "description": "Se o valor é _true_ então o canvas \n                 será redimensionado e os eventos de redimensionamento \n                 da janela serão rastreadas. Se o valor é _false_, \n                 então o redimensionamento não estará",
                     "type": "Boolean"
                 }
             ],
             "beta": 1,
             "since": "0.0.1",
             "class": "ATEngine"
+        },
+        {
+            "file": "src/ATEngine.js",
+            "line": 319,
+            "description": "Desenhar a cena utilizando a câmera",
+            "itemtype": "method",
+            "name": "desenhar",
+            "params": [
+                {
+                    "name": "habilitado",
+                    "description": "Se o valor é _true_ então o canvas \n                 será redimensionado e os eventos de redimensionamento \n                 da janela serão rastreadas. Se o valor é _false_, \n                 então o redimensionamento não estará",
+                    "type": "Boolean"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATEngine"
+        },
+        {
+            "file": "src/ATEngine.js",
+            "line": 337,
+            "description": "Desenhar um mesh",
+            "itemtype": "method",
+            "name": "desenharMesh",
+            "params": [
+                {
+                    "name": "mesh",
+                    "description": "a ser desenhado",
+                    "type": "ATMesh"
+                },
+                {
+                    "name": "matriz",
+                    "description": "resultante da multiplicação de todos as matrizes de modelo dos ancestrais",
+                    "type": "Array"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATEngine"
+        },
+        {
+            "file": "src/ATEngine.js",
+            "line": 414,
+            "description": "Desenhar um objeto. Se for um container de objetos, desenha os filhos (recursivamente).\nAntes disso, as matrizes de modelo vão se combinando",
+            "itemtype": "method",
+            "name": "desenharMesh",
+            "params": [
+                {
+                    "name": "objeto",
+                    "description": "a ser desenhado",
+                    "type": "ATObjeto3D"
+                },
+                {
+                    "name": "matriz",
+                    "description": "resultante da multiplicação de todos as matrizes de modelo dos ancestrais",
+                    "type": "Array"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATEngine"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 13,
+            "description": "Lista de Cores",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 20,
+            "description": "Lista de Posicoes",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 27,
+            "description": "Lista de Normais",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 34,
+            "description": "Lista de Coordenadas de Textura",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 42,
+            "description": "Lista Indexada de Cores",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 49,
+            "description": "Lista indexada de posições",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 56,
+            "description": "Lista indexada de normais",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 63,
+            "description": "Lista indexada de texturas",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 71,
+            "description": "Lista de índices",
+            "itemtype": "property",
+            "name": "listaCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 79,
+            "description": "Buffer de posição",
+            "itemtype": "property",
+            "name": "bufferPosicoes;",
+            "access": "private",
+            "tagname": "",
+            "type": "{WebGLBuffer}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 86,
+            "description": "Buffer de textura",
+            "itemtype": "property",
+            "name": "bufferCoordTexturas;",
+            "access": "private",
+            "tagname": "",
+            "type": "{WebGLBuffer}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 93,
+            "description": "Buffer de normal",
+            "itemtype": "property",
+            "name": "bufferNormais",
+            "access": "private",
+            "tagname": "",
+            "type": "{WebGLBuffer}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 100,
+            "description": "Buffer de cores",
+            "itemtype": "property",
+            "name": "bufferCores;",
+            "access": "private",
+            "tagname": "",
+            "type": "{WebGLBuffer}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATGeometria.js",
+            "line": 107,
+            "description": "Buffer de índices",
+            "itemtype": "property",
+            "name": "bufferIndices;",
+            "access": "private",
+            "tagname": "",
+            "type": "{WebGLBuffer}",
+            "class": "ATGeometria"
+        },
+        {
+            "file": "src/ATMesh.js",
+            "line": 14,
+            "description": "Define o material",
+            "itemtype": "method",
+            "name": "setMaterial",
+            "params": [
+                {
+                    "name": "mat",
+                    "description": "O material",
+                    "type": "ATMaterial"
+                }
+            ],
+            "class": "ATMesh"
+        },
+        {
+            "file": "src/ATMesh.js",
+            "line": 24,
+            "description": "Obter o material",
+            "itemtype": "method",
+            "name": "getMaterial",
+            "return": {
+                "description": "material do mesh",
+                "type": "ATMaterial"
+            },
+            "class": "ATMesh"
+        },
+        {
+            "file": "src/ATMesh.js",
+            "line": 34,
+            "description": "Define o material",
+            "itemtype": "method",
+            "name": "setGeometria",
+            "params": [
+                {
+                    "name": "mat",
+                    "description": "O material",
+                    "type": "ATGeometria"
+                }
+            ],
+            "class": "ATMesh"
+        },
+        {
+            "file": "src/ATMesh.js",
+            "line": 43,
+            "description": "Define o material",
+            "itemtype": "method",
+            "name": "getGeometria",
+            "return": {
+                "description": "",
+                "type": "ATGeometria"
+            },
+            "class": "ATMesh"
+        },
+        {
+            "file": "src/ATMesh.js",
+            "line": 53,
+            "description": "Obtém o nome do mesh",
+            "itemtype": "method",
+            "name": "getNome",
+            "return": {
+                "description": "nome",
+                "type": "String"
+            },
+            "class": "ATMesh"
+        },
+        {
+            "file": "src/ATMesh.js",
+            "line": 63,
+            "description": "Define o material",
+            "itemtype": "method",
+            "name": "setNome",
+            "params": [
+                {
+                    "name": "nom",
+                    "description": "nome",
+                    "type": "String"
+                }
+            ],
+            "class": "ATMesh"
+        },
+        {
+            "file": "src/ATMesh.js",
+            "line": 77,
+            "description": "Carregar OBJ. A cena carrega",
+            "itemtype": "method",
+            "name": "getQtdFilhos",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATMesh"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 14,
+            "description": "Adicionar um objeto filho (se não estiver adicionado)",
+            "itemtype": "method",
+            "name": "adicionarFilho",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 29,
+            "description": "Remover um objeto (se for um filho)",
+            "itemtype": "method",
+            "name": "removerFilho",
+            "params": [
+                {
+                    "name": "objeto",
+                    "description": "",
+                    "type": "ATObjeto3D"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 42,
+            "description": "Obter o ATObjeto3D pai.",
+            "itemtype": "method",
+            "name": "getPai",
+            "params": [
+                {
+                    "name": "objeto",
+                    "description": "",
+                    "type": "ATObjeto3D"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 53,
+            "description": "Remover um objeto (se for um filho)",
+            "itemtype": "method",
+            "name": "setPai",
+            "params": [
+                {
+                    "name": "objeto",
+                    "description": "",
+                    "type": "ATObjeto3D"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 65,
+            "description": "Está ou não visível?\nUsado na renderização",
+            "itemtype": "property",
+            "name": "visible",
+            "type": "{Boolean}",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 75,
+            "description": "Obter o i-ésimo filho\nUsado na renderização",
+            "itemtype": "method",
+            "name": "getFilho",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "índice do filho",
+                    "type": "Number"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 91,
+            "description": "Obter o número total de filhos",
+            "itemtype": "method",
+            "name": "getQtdFilhos",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
+        },
+        {
+            "file": "src/ATObjeto3D.js",
+            "line": 102,
+            "description": "Obter o número total de filhos",
+            "itemtype": "method",
+            "name": "getQtdFilhos",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATObjeto3D"
         },
         {
             "file": "src/ATShader.js",
@@ -694,7 +1264,7 @@
         },
         {
             "file": "src/ATShaderProgram.js",
-            "line": 35,
+            "line": 36,
             "description": "Guarda o id do shaderprogram",
             "itemtype": "property",
             "name": "programa",
@@ -703,7 +1273,7 @@
         },
         {
             "file": "src/ATShaderProgram.js",
-            "line": 56,
+            "line": 62,
             "description": "Carrega os shaders de vértice e fragmento e executa um callback com o resultado.\nÉ um método assíncrono, recebe o retorno executando uma função passada como parâmetro.\nUsado em {{#crossLink \"ATEngine/carregarShaders:method\"}}ATEngine.carregarShaders{{/crossLink}}",
             "itemtype": "method",
             "name": "carregarShaders",
@@ -716,17 +1286,60 @@
         },
         {
             "file": "src/ATUtils.js",
-            "line": 1,
-            "description": "Classe para funções que são externos às classes da engine\nque servirão como ferramentas auxiliares",
+            "line": 53,
+            "description": "Adicionar uma pendência assíncrona",
+            "itemtype": "method",
+            "name": "adicionarPendencia",
+            "params": [
+                {
+                    "name": "nome",
+                    "description": "O nome da classe que tratará os eventos",
+                    "type": "String"
+                },
+                {
+                    "name": "objeto",
+                    "description": "A referência ao pedido que a classe está tratando",
+                    "type": "Object"
+                }
+            ],
             "beta": 1,
             "since": "0.0.1",
-            "class": "ATVertexShader"
+            "class": "ATUtils.EventDispatcher"
+        },
+        {
+            "file": "src/ATUtils.js",
+            "line": 68,
+            "description": "Remover uma pendência assíncrona",
+            "itemtype": "method",
+            "name": "removerPendencia",
+            "params": [
+                {
+                    "name": "nome",
+                    "description": "O nome da classe que tratará os eventos",
+                    "type": "String"
+                },
+                {
+                    "name": "objeto",
+                    "description": "A referência ao pedido que a classe está tratando",
+                    "type": "Object"
+                }
+            ],
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATUtils.EventDispatcher"
+        },
+        {
+            "file": "src/ATUtils.js",
+            "line": 83,
+            "description": "Quando todas as tarefas da engine estiverem prontas,\ndespacha um evento interno que será ouvido pela função\npronta (se executada anteriormente)",
+            "itemtype": "method",
+            "name": "verificarPendencias",
+            "access": "private",
+            "tagname": "",
+            "beta": 1,
+            "since": "0.0.1",
+            "class": "ATUtils.EventDispatcher"
         }
     ],
-    "warnings": [
-        {
-            "message": "Missing item type\nClasse para funções que são externos às classes da engine\nque servirão como ferramentas auxiliares",
-            "line": " src/ATUtils.js:1"
-        }
-    ]
+    "warnings": []
 }

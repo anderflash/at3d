@@ -1,2 +1,3 @@
 #!/bin/sh
-yuidoc . -o doc --themedir themes
+rm -rf doc
+yuidoc src -o doc --themedir themes

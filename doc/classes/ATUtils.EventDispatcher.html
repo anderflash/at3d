@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>ATCamera</title>
+    <title>ATUtils.EventDispatcher</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -120,7 +120,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Classe ATCamera</h1>
+                        <h1>Classe ATUtils.EventDispatcher</h1>
 <div class="box meta">
     
 
@@ -128,7 +128,7 @@
 
     
         <div class="foundat">
-            Definido em: <a href="../files/src_ATCamera.js.html#l1"><code>src&#x2F;ATCamera.js:1</code></a>
+            Definido em: <a href="../files/src_ATUtils.js.html#l31"><code>src&#x2F;ATUtils.js:31</code></a>
         </div>
     
 
@@ -142,69 +142,10 @@
 
 
 <div class="box intro">
-    <p>Representação da Câmera em uma cena</p>
+    <p>Classe para despachadores de eventos</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Construtor</h2>
-        <div id="method_ATCamera" class="method item">
-    <h3 class="name"><code>ATCamera</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Definido em
-                
-            
-        
-        
-        <a href="../files/src_ATCamera.js.html#l1"><code>src&#x2F;ATCamera.js:1</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>Disponível desde 0.0.1</p>
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -214,8 +155,6 @@
         
             <li class="api-class-tab methods"><a href="#methods">Métodos</a></li>
         
-        
-            <li class="api-class-tab properties"><a href="#properties">Propriedades</a></li>
         
         
         
@@ -232,28 +171,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getMatrizProjecao">getMatrizProjecao</a>
+                                <a href="#method_adicionarPendencia">adicionarPendencia</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getMatrizProjecao">getMatrizProjecao</a>
+                                <a href="#method_removerPendencia">removerPendencia</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_getMatrizVisualizacao">getMatrizVisualizacao</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_lookAt">lookAt</a>
+                            <li class="index-item method private">
+                                <a href="#method_verificarPendencias">verificarPendencias</a>
 
                                 
                                 
@@ -263,28 +195,6 @@
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property private">
-                                <a href="#property_pMatrix">pMatrix</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private">
-                                <a href="#property_vMatrix">vMatrix</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -297,94 +207,30 @@
                 <h2 class="off-left">Métodos</h2>
 
                 
-                    <div id="method_getMatrizProjecao" class="method item">
-    <h3 class="name"><code>getMatrizProjecao</code></h3>
+                    <div id="method_adicionarPendencia" class="method item">
+    <h3 class="name"><code>adicionarPendencia</code></h3>
 
     
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Array</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
             
-                
-                <p>
-                
-                Definido em
-                
+                <li class="arg">
+                    
+                        <code>nome</code>
+                    
+                </li>
             
-        
-        
-        <a href="../files/src_ATCamera.js.html#l53"><code>src&#x2F;ATCamera.js:53</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>Disponível desde 0.0.1</p>
-        
-    </div>
-
-    <div class="description">
-        <p>Obter a matrix de projeção (vide padrão MVP)
-Parâmetros intrísecos</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Retorna:</h4>
-
-            <div class="returns-description">
-                
+                <li class="arg">
                     
-                        <span class="type">Array</span>:
+                        <code>objeto</code>
                     
-                    <p>Retorna a matrix de visualização 4x4</p>
-
-                
-            </div>
+                </li>
+            
+            </ul><span class="paren">)</span>
         </div>
     
 
     
-</div>
-
-                
-                    <div id="method_getMatrizProjecao" class="method item">
-    <h3 class="name"><code>getMatrizProjecao</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Array</span>
-        </span>
-    
 
     
 
@@ -409,7 +255,7 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l65"><code>src&#x2F;ATCamera.js:65</code></a>
+        <a href="../files/src_ATUtils.js.html#l53"><code>src&#x2F;ATUtils.js:53</code></a>
         
         </p>
 
@@ -422,117 +268,82 @@ Parâmetros intrísecos</p>
     </div>
 
     <div class="description">
-        <p>Obter a matrix de projeção (vide padrão MVP)
-Parâmetros intrísecos</p>
+        <p>Adicionar uma pendência assíncrona</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parâmetros:</h4>
 
-    
-        <div class="returns">
-            <h4>Retorna:</h4>
-
-            <div class="returns-description">
-                
+            <ul class="params-list">
+            
+                <li class="param">
                     
-                        <span class="type">Array</span>:
+                        <code class="param-name">nome</code>
+                        <span class="type">String</span>
                     
-                    <p>Retorna a matrix de visualização 4x4</p>
 
-                
-            </div>
+                    
+
+                    <div class="param-description">
+                        <p>O nome da classe que tratará os eventos</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">objeto</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A referência ao pedido que a classe está tratando</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
         </div>
     
 
     
+
+    
 </div>
 
                 
-                    <div id="method_getMatrizVisualizacao" class="method item">
-    <h3 class="name"><code>getMatrizVisualizacao</code></h3>
+                    <div id="method_removerPendencia" class="method item">
+    <h3 class="name"><code>removerPendencia</code></h3>
 
     
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Array</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
             
-                
-                <p>
-                
-                Definido em
-                
+                <li class="arg">
+                    
+                        <code>nome</code>
+                    
+                </li>
             
-        
-        
-        <a href="../files/src_ATCamera.js.html#l40"><code>src&#x2F;ATCamera.js:40</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>Disponível desde 0.0.1</p>
-        
-    </div>
-
-    <div class="description">
-        <p>Obter a matrix de visualização (vide padrão MVP)
-Parâmetros intrísecos</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Retorna:</h4>
-
-            <div class="returns-description">
-                
+                <li class="arg">
                     
-                        <span class="type">Array</span>:
+                        <code>objeto</code>
                     
-                    <p>Retorna a matrix de visualização 4x4</p>
-
-                
-            </div>
+                </li>
+            
+            </ul><span class="paren">)</span>
         </div>
     
 
     
-</div>
-
-                
-                    <div id="method_lookAt" class="method item">
-    <h3 class="name"><code>lookAt</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
 
     
 
@@ -557,7 +368,7 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l28"><code>src&#x2F;ATCamera.js:28</code></a>
+        <a href="../files/src_ATUtils.js.html#l68"><code>src&#x2F;ATUtils.js:68</code></a>
         
         </p>
 
@@ -570,11 +381,50 @@ Parâmetros intrísecos</p>
     </div>
 
     <div class="description">
-        <p>Posicionar e orientar a câmera
-Parâmetros intrísecos</p>
+        <p>Remover uma pendência assíncrona</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">nome</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>O nome da classe que tratará os eventos</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">objeto</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A referência ao pedido que a classe está tratando</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -583,17 +433,14 @@ Parâmetros intrísecos</p>
 </div>
 
                 
-            </div>
-        
+                    <div id="method_verificarPendencias" class="method item private">
+    <h3 class="name"><code>verificarPendencias</code></h3>
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Propriedades</h2>
+    
+        <span class="paren">()</span>
+    
 
-                
-                    <div id="property_pMatrix" class="property item private">
-    <h3 class="name"><code>pMatrix</code></h3>
-    <span class="type">Unknown</span>
+    
 
     
 
@@ -605,51 +452,6 @@ Parâmetros intrísecos</p>
 
     
 
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Definido em
-                
-            
-        
-        
-        <a href="../files/src_ATCamera.js.html#l19"><code>src&#x2F;ATCamera.js:19</code></a>
-        
-        </p>
-
-        
-
-        
-            <p>Disponível desde 0.0.1</p>
-        
-    </div>
-
-    <div class="description">
-        <p>Matriz de Projeção</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_vMatrix" class="property item private">
-    <h3 class="name"><code>vMatrix</code></h3>
-    <span class="type">Unknown</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
     
 
     
@@ -665,9 +467,10 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l10"><code>src&#x2F;ATCamera.js:10</code></a>
+        <a href="../files/src_ATUtils.js.html#l83"><code>src&#x2F;ATUtils.js:83</code></a>
         
         </p>
+
 
         
 
@@ -677,7 +480,9 @@ Parâmetros intrísecos</p>
     </div>
 
     <div class="description">
-        <p>Matriz de Visualização</p>
+        <p>Quando todas as tarefas da engine estiverem prontas,
+despacha um evento interno que será ouvido pela função
+pronta (se executada anteriormente)</p>
 
     </div>
 
@@ -690,6 +495,8 @@ Parâmetros intrísecos</p>
 
                 
             </div>
+        
+
         
 
         

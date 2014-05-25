@@ -8,5 +8,6 @@
 */
 function ATFragmentShader()
 {
+  ATFragmentShader.super_.call(this);
 }
 ATUtils.inherits(ATFragmentShader, ATShader);

@@ -51,7 +51,7 @@
             
                 <li><a href="../classes/ATFragmentShader.html">ATFragmentShader</a></li>
             
-                <li><a href="../classes/ATGeometry.html">ATGeometry</a></li>
+                <li><a href="../classes/ATGeometria.html">ATGeometria</a></li>
             
                 <li><a href="../classes/ATKeyboard.html">ATKeyboard</a></li>
             
@@ -61,15 +61,23 @@
             
                 <li><a href="../classes/ATMaterialTextura.html">ATMaterialTextura</a></li>
             
+                <li><a href="../classes/ATMesh.html">ATMesh</a></li>
+            
                 <li><a href="../classes/ATMouse.html">ATMouse</a></li>
             
                 <li><a href="../classes/ATObjeto3D.html">ATObjeto3D</a></li>
+            
+                <li><a href="../classes/ATRenderer.html">ATRenderer</a></li>
             
                 <li><a href="../classes/ATShader.html">ATShader</a></li>
             
                 <li><a href="../classes/ATShaderProgram.html">ATShaderProgram</a></li>
             
                 <li><a href="../classes/ATTrackball.html">ATTrackball</a></li>
+            
+                <li><a href="../classes/ATUtils.html">ATUtils</a></li>
+            
+                <li><a href="../classes/ATUtils.EventDispatcher.html">ATUtils.EventDispatcher</a></li>
             
                 <li><a href="../classes/ATVertexShader.html">ATVertexShader</a></li>
             
@@ -124,14 +132,108 @@
 * @beta
 * @since 0.0.1
 */
-function ATObjeto3D()
+function ATObjeto3D(nome)
 {
-  var material = null;
-  var geometria = null;
-  
-  this.lerOBJ = function(nome)
+  var filhos = [];
+	var pai = null;
+	
+	/**
+	* Adicionar um objeto filho (se não estiver adicionado)
+	* @method adicionarFilho
+	* @beta
+	* @since 0.0.1
+	*/
+	this.adicionarFilho = function(objeto)
+	{
+		if(filhos.indexOf(objeto) == -1)
+		{
+			filhos.push(objeto);
+			objeto.setPai(this);
+		}
+	}
+	
+	/**
+	* Remover um objeto (se for um filho)
+	* @method removerFilho
+	* @param {ATObjeto3D} objeto
+	* @beta
+	* @since 0.0.1
+	*/
+	this.removerFilho = function(objeto)
+	{
+		var indice = filhos.indexOf(objeto);
+		if(indice != -1)
+			filhos.splice(indice,1);
+	}
+	/**
+	* Obter o ATObjeto3D pai.
+	* @method getPai
+	* @param {ATObjeto3D} objeto
+	* @beta
+	* @since 0.0.1
+	*/
+	this.getPai = function()
+	{
+		return pai;
+	}
+	/**
+	* Remover um objeto (se for um filho)
+	* @method setPai
+	* @param {ATObjeto3D} objeto
+	* @beta
+	* @since 0.0.1
+	*/
+	this.setPai = function(objeto)
+	{
+		pai = objeto;
+	}
+	
+	/**
+	* Está ou não visível?
+	* Usado na renderização
+	* @property visible
+	* @type {Boolean}
+	* @beta
+	* @since 0.0.1
+	*/
+	this.visible = true;
+	
+	/**
+	* Obter o i-ésimo filho
+	* Usado na renderização
+	* @method getFilho
+	* @param {Number} o índice do filho
+	* @beta
+	* @since 0.0.1
+	*/
+	this.getFilho = function(indice)
+	{
+		if(i &lt; filhos.length &amp;&amp; i &gt;= 0)
+			return filhos[i];
+		else
+			return null;
+	}
+	
+	/**
+	* Obter o número total de filhos
+	* @method getQtdFilhos
+	* @beta
+	* @since 0.0.1
+	*/
+	this.getQtdFilhos = function()
+	{
+		return filhos.length;
+	}
+	  
+  /**
+  * Obter o número total de filhos
+  * @method getQtdFilhos
+  * @beta
+  * @since 0.0.1
+  */
+  this.getNome = function()
   {
-    
+    return nome;
   }
 }
     </pre>

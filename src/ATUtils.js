@@ -1,10 +1,20 @@
 /**
 * Classe para funções que são externos às classes da engine
 * que servirão como ferramentas auxiliares
+* @class ATUtils
 * @beta
 * @since 0.0.1
 */ 
 var ATUtils = {};
+
+ATUtils.atributos = {
+  POSICAO:"aVertexPosition",
+  COR:"aVertexColor",
+  NORMAL:"aVertexNormal",
+  COORDTEX:"aVertexTexCoord",
+  INDICE:"indice",
+};
+
 // took this right from require('util').inherits
 ATUtils.inherits = function(ctor, superCtor) { 
   ctor.super_ = superCtor;
@@ -18,8 +28,17 @@ ATUtils.inherits = function(ctor, superCtor) {
   });
 };
 
-ATUtils.EventDispatcher = function () {}
+/**
+* Classe para despachadores de eventos
+* @class ATUtils.EventDispatcher
+* @beta
+* @since 0.0.1
+*/ 
+ATUtils.EventDispatcher = function () {
+  
+}
 ATUtils.EventDispatcher.prototype = {
+  pendenciasAssincronas:{},
 	constructor: ATUtils.EventDispatcher,
 
 	apply: function ( object ) {
@@ -30,7 +49,57 @@ ATUtils.EventDispatcher.prototype = {
 		object.dispatchEvent = ATUtils.EventDispatcher.prototype.dispatchEvent;
 
 	},
-
+  
+  /**
+  * Adicionar uma pendência assíncrona
+  * @method adicionarPendencia
+  * @param {String} nome O nome da classe que tratará os eventos
+  * @param {Object} objeto A referência ao pedido que a classe está tratando
+  * @beta
+  * @since 0.0.1
+  */
+  adicionarPendencia:function(nome, objeto)
+  {
+    if(!ATUtils.EventDispatcher.prototype.pendenciasAssincronas.hasOwnProperty(nome))
+      ATUtils.EventDispatcher.prototype.pendenciasAssincronas[nome] = {};
+    ATUtils.EventDispatcher.prototype.pendenciasAssincronas[nome][objeto] = false;
+  },
+  
+  /**
+  * Remover uma pendência assíncrona
+  * @method removerPendencia
+  * @param {String} nome O nome da classe que tratará os eventos
+  * @param {Object} objeto A referência ao pedido que a classe está tratando
+  * @beta
+  * @since 0.0.1
+  */
+  removerPendencia:function(nome, objeto)
+  {
+    if(!ATUtils.EventDispatcher.prototype.pendenciasAssincronas.hasOwnProperty(nome))
+      ATUtils.EventDispatcher.prototype.pendenciasAssincronas[nome] = {};
+    ATUtils.EventDispatcher.prototype.pendenciasAssincronas[nome][objeto] = true;
+  },
+  
+  /**
+  * Quando todas as tarefas da engine estiverem prontas,
+  * despacha um evento interno que será ouvido pela função
+  * pronta (se executada anteriormente)
+  * @method verificarPendencias
+  * @private
+  * @beta
+  * @since 0.0.1
+  */
+  verificarPendencias:function(nome)
+  {
+    if(ATUtils.EventDispatcher.prototype.pendenciasAssincronas.hasOwnProperty(nome))
+    {
+      for(var tipo in ATUtils.EventDispatcher.prototype.pendenciasAssincronas[nome])
+        if(!ATUtils.EventDispatcher.prototype.pendenciasAssincronas[nome][tipo]) return
+    }
+    ATUtils.EventDispatcher.prototype.dispatchEvent({type:nome+"pronta"});
+  },
+  
+  
 	addEventListener: function ( type, listener ) {
 		if ( this._listeners === undefined ) this._listeners = {};
 		var listeners = this._listeners;
@@ -79,4 +148,11 @@ ATUtils.EventDispatcher.prototype = {
 			}
 		}
 	}
+};
+
+Array.prototype.pushArray = function() {
+    var toPush = this.concat.apply([], arguments);
+    for (var i = 0, len = toPush.length; i < len; ++i) {
+        this.push(toPush[i]);
+    }
 };

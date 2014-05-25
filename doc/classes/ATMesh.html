@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>ATCamera</title>
+    <title>ATMesh</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -120,7 +120,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Classe ATCamera</h1>
+                        <h1>Classe ATMesh</h1>
 <div class="box meta">
     
 
@@ -128,7 +128,7 @@
 
     
         <div class="foundat">
-            Definido em: <a href="../files/src_ATCamera.js.html#l1"><code>src&#x2F;ATCamera.js:1</code></a>
+            Definido em: <a href="../files/src_ATMesh.js.html#l1"><code>src&#x2F;ATMesh.js:1</code></a>
         </div>
     
 
@@ -142,15 +142,15 @@
 
 
 <div class="box intro">
-    <p>Representação da Câmera em uma cena</p>
+    <p>Objeto3D com vértices e faces</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Construtor</h2>
-        <div id="method_ATCamera" class="method item">
-    <h3 class="name"><code>ATCamera</code></h3>
+        <div id="method_ATMesh" class="method item">
+    <h3 class="name"><code>ATMesh</code></h3>
 
     
         <span class="paren">()</span>
@@ -181,7 +181,7 @@
             
         
         
-        <a href="../files/src_ATCamera.js.html#l1"><code>src&#x2F;ATCamera.js:1</code></a>
+        <a href="../files/src_ATMesh.js.html#l1"><code>src&#x2F;ATMesh.js:1</code></a>
         
         </p>
 
@@ -215,8 +215,6 @@
             <li class="api-class-tab methods"><a href="#methods">Métodos</a></li>
         
         
-            <li class="api-class-tab properties"><a href="#properties">Propriedades</a></li>
-        
         
         
     </ul>
@@ -232,28 +230,49 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getMatrizProjecao">getMatrizProjecao</a>
+                                <a href="#method_getGeometria">getGeometria</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getMatrizProjecao">getMatrizProjecao</a>
+                                <a href="#method_getMaterial">getMaterial</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getMatrizVisualizacao">getMatrizVisualizacao</a>
+                                <a href="#method_getNome">getNome</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_lookAt">lookAt</a>
+                                <a href="#method_getQtdFilhos">getQtdFilhos</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setGeometria">setGeometria</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setMaterial">setMaterial</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setNome">setNome</a>
 
                                 
                                 
@@ -263,28 +282,6 @@
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property private">
-                                <a href="#property_pMatrix">pMatrix</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private">
-                                <a href="#property_vMatrix">vMatrix</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -297,8 +294,8 @@
                 <h2 class="off-left">Métodos</h2>
 
                 
-                    <div id="method_getMatrizProjecao" class="method item">
-    <h3 class="name"><code>getMatrizProjecao</code></h3>
+                    <div id="method_getGeometria" class="method item">
+    <h3 class="name"><code>getGeometria</code></h3>
 
     
         <span class="paren">()</span>
@@ -306,7 +303,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Array</span>
+            <span class="type"><a href="../classes/ATGeometria.html" class="crosslink">ATGeometria</a></span>
         </span>
     
 
@@ -333,7 +330,7 @@
             
         
         
-        <a href="../files/src_ATCamera.js.html#l53"><code>src&#x2F;ATCamera.js:53</code></a>
+        <a href="../files/src_ATMesh.js.html#l43"><code>src&#x2F;ATMesh.js:43</code></a>
         
         </p>
 
@@ -341,13 +338,10 @@
         
 
         
-            <p>Disponível desde 0.0.1</p>
-        
     </div>
 
     <div class="description">
-        <p>Obter a matrix de projeção (vide padrão MVP)
-Parâmetros intrísecos</p>
+        <p>Define o material</p>
 
     </div>
 
@@ -360,10 +354,8 @@ Parâmetros intrísecos</p>
             <div class="returns-description">
                 
                     
-                        <span class="type">Array</span>:
+                        <span class="type"><a href="../classes/ATGeometria.html" class="crosslink">ATGeometria</a></span>:
                     
-                    <p>Retorna a matrix de visualização 4x4</p>
-
                 
             </div>
         </div>
@@ -373,8 +365,8 @@ Parâmetros intrísecos</p>
 </div>
 
                 
-                    <div id="method_getMatrizProjecao" class="method item">
-    <h3 class="name"><code>getMatrizProjecao</code></h3>
+                    <div id="method_getMaterial" class="method item">
+    <h3 class="name"><code>getMaterial</code></h3>
 
     
         <span class="paren">()</span>
@@ -382,7 +374,7 @@ Parâmetros intrísecos</p>
 
     
         <span class="returns-inline">
-            <span class="type">Array</span>
+            <span class="type"><a href="../classes/ATMaterial.html" class="crosslink">ATMaterial</a></span>
         </span>
     
 
@@ -409,7 +401,7 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l65"><code>src&#x2F;ATCamera.js:65</code></a>
+        <a href="../files/src_ATMesh.js.html#l24"><code>src&#x2F;ATMesh.js:24</code></a>
         
         </p>
 
@@ -417,13 +409,10 @@ Parâmetros intrísecos</p>
         
 
         
-            <p>Disponível desde 0.0.1</p>
-        
     </div>
 
     <div class="description">
-        <p>Obter a matrix de projeção (vide padrão MVP)
-Parâmetros intrísecos</p>
+        <p>Obter o material</p>
 
     </div>
 
@@ -436,9 +425,9 @@ Parâmetros intrísecos</p>
             <div class="returns-description">
                 
                     
-                        <span class="type">Array</span>:
+                        <span class="type"><a href="../classes/ATMaterial.html" class="crosslink">ATMaterial</a></span>:
                     
-                    <p>Retorna a matrix de visualização 4x4</p>
+                    <p>material do mesh</p>
 
                 
             </div>
@@ -449,8 +438,8 @@ Parâmetros intrísecos</p>
 </div>
 
                 
-                    <div id="method_getMatrizVisualizacao" class="method item">
-    <h3 class="name"><code>getMatrizVisualizacao</code></h3>
+                    <div id="method_getNome" class="method item">
+    <h3 class="name"><code>getNome</code></h3>
 
     
         <span class="paren">()</span>
@@ -458,7 +447,7 @@ Parâmetros intrísecos</p>
 
     
         <span class="returns-inline">
-            <span class="type">Array</span>
+            <span class="type">String</span>
         </span>
     
 
@@ -485,7 +474,7 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l40"><code>src&#x2F;ATCamera.js:40</code></a>
+        <a href="../files/src_ATMesh.js.html#l53"><code>src&#x2F;ATMesh.js:53</code></a>
         
         </p>
 
@@ -493,13 +482,10 @@ Parâmetros intrísecos</p>
         
 
         
-            <p>Disponível desde 0.0.1</p>
-        
     </div>
 
     <div class="description">
-        <p>Obter a matrix de visualização (vide padrão MVP)
-Parâmetros intrísecos</p>
+        <p>Obtém o nome do mesh</p>
 
     </div>
 
@@ -512,9 +498,9 @@ Parâmetros intrísecos</p>
             <div class="returns-description">
                 
                     
-                        <span class="type">Array</span>:
+                        <span class="type">String</span>:
                     
-                    <p>Retorna a matrix de visualização 4x4</p>
+                    <p>nome</p>
 
                 
             </div>
@@ -525,8 +511,8 @@ Parâmetros intrísecos</p>
 </div>
 
                 
-                    <div id="method_lookAt" class="method item">
-    <h3 class="name"><code>lookAt</code></h3>
+                    <div id="method_getQtdFilhos" class="method item">
+    <h3 class="name"><code>getQtdFilhos</code></h3>
 
     
         <span class="paren">()</span>
@@ -557,7 +543,7 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l28"><code>src&#x2F;ATCamera.js:28</code></a>
+        <a href="../files/src_ATMesh.js.html#l77"><code>src&#x2F;ATMesh.js:77</code></a>
         
         </p>
 
@@ -570,8 +556,7 @@ Parâmetros intrísecos</p>
     </div>
 
     <div class="description">
-        <p>Posicionar e orientar a câmera
-Parâmetros intrísecos</p>
+        <p>Carregar OBJ. A cena carrega</p>
 
     </div>
 
@@ -583,22 +568,31 @@ Parâmetros intrísecos</p>
 </div>
 
                 
-            </div>
-        
+                    <div id="method_setGeometria" class="method item">
+    <h3 class="name"><code>setGeometria</code></h3>
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Propriedades</h2>
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>mat</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
 
-                
-                    <div id="property_pMatrix" class="property item private">
-    <h3 class="name"><code>pMatrix</code></h3>
-    <span class="type">Unknown</span>
+    
 
     
 
     
-        <span class="flag private">private</span>
+
+    
+
     
 
     
@@ -616,22 +610,45 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l19"><code>src&#x2F;ATCamera.js:19</code></a>
+        <a href="../files/src_ATMesh.js.html#l34"><code>src&#x2F;ATMesh.js:34</code></a>
         
         </p>
 
-        
 
         
-            <p>Disponível desde 0.0.1</p>
+
         
     </div>
 
     <div class="description">
-        <p>Matriz de Projeção</p>
+        <p>Define o material</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">mat</code>
+                        <span class="type"><a href="../classes/ATGeometria.html" class="crosslink">ATGeometria</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>O material</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -640,14 +657,31 @@ Parâmetros intrísecos</p>
 </div>
 
                 
-                    <div id="property_vMatrix" class="property item private">
-    <h3 class="name"><code>vMatrix</code></h3>
-    <span class="type">Unknown</span>
+                    <div id="method_setMaterial" class="method item">
+    <h3 class="name"><code>setMaterial</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>mat</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
 
     
 
     
-        <span class="flag private">private</span>
+
+    
+
     
 
     
@@ -665,22 +699,134 @@ Parâmetros intrísecos</p>
             
         
         
-        <a href="../files/src_ATCamera.js.html#l10"><code>src&#x2F;ATCamera.js:10</code></a>
+        <a href="../files/src_ATMesh.js.html#l14"><code>src&#x2F;ATMesh.js:14</code></a>
         
         </p>
 
-        
 
         
-            <p>Disponível desde 0.0.1</p>
+
         
     </div>
 
     <div class="description">
-        <p>Matriz de Visualização</p>
+        <p>Define o material</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">mat</code>
+                        <span class="type"><a href="../classes/ATMaterial.html" class="crosslink">ATMaterial</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>O material</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setNome" class="method item">
+    <h3 class="name"><code>setNome</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>nom</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Definido em
+                
+            
+        
+        
+        <a href="../files/src_ATMesh.js.html#l63"><code>src&#x2F;ATMesh.js:63</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Define o material</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parâmetros:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">nom</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>nome</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -690,6 +836,8 @@ Parâmetros intrísecos</p>
 
                 
             </div>
+        
+
         
 
         

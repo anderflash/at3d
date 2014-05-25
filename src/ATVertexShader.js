@@ -8,5 +8,6 @@
 */
 function ATVertexShader()
 {
+  ATVertexShader.super_.call(this);
 }
 ATUtils.inherits(ATVertexShader, ATShader);

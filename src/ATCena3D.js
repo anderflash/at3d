@@ -9,18 +9,16 @@
 */
 function ATCena3D()
 {
+  ATCena3D.super_.call(this);
   var objetos = [];
   
   /**
   * Se houver alguma chamada assíncrona, espere-a
-  * @private
-  * @property pendenciasAssincronas
-  * @type {Object}
+  * @method criarObjeto
+  * @param {String} nome O nome do objeto
   * @beta
   * @since 0.0.1
   */
-  var pendenciasAssincronas = {};
-  
   this.criarObjeto = function(nome)
   {
     var objeto = new ATObjeto3D(nome);
@@ -43,48 +41,32 @@ function ATCena3D()
 //     
 //   }
 
-	this.carregarOBJ = function(nome, caminho)
-	{
-		pendenciasAssincronas[nome] = false;
-		$.get(caminho, function(data)
-		{
-			var linhas = data.split('\n');
-			var numLinhas = linhas.length;
-			
-			for(var key = 0; key < numLinhas; key++)
-			{
-				var linha = linhas[key]  +'';
-				var partes = linha.split(' ');
-				switch(partes[0])
-				{
-					case "o":
-						if(objeto)
-						var objeto = new ATObjeto3D(partes[1]);
-						objetos.push(objeto);
-						key = objeto.carregarOBJ(linhas, caminho, key);
-					break;
-				}
-			}
-			pendenciasAssincronas[nome] = true;
-			verificarPendencias();
-		});
-	}
-	
-	/**
-  * Quando todas as tarefas da engine estiverem prontas,
-  * despacha um evento interno que será ouvido pela função
-  * pronta (se executada anteriormente)
-  * @method verificarPendencias
-  * @private
-  * @beta
-  * @since 0.0.1
-  */
-  var verificarPendencias = function()
-  {
-    for(var tipo in pendenciasAssincronas)
-      if(!pendenciasAssincronas[tipo]) 
-	return;
-    this.dispatchEvent({type:"pronta"});
-  }
+// 	this.carregarOBJ = function(nome, caminho)
+// 	{
+//     var cena = this;
+//     ATUtils.EventDispatcher.prototype.adicionarPendencia(this.constructor.name, nome);
+// 		$.get(caminho, function(data)
+// 		{
+// 			var linhas = data.split('\n');
+// 			var numLinhas = linhas.length;
+// 			
+// 			for(var key = 0; key < numLinhas; key++)
+// 			{
+// 				var linha = linhas[key]  +'';
+// 				var partes = linha.split(' ');
+// 				switch(partes[0])
+// 				{
+// 					case "o":
+// 						if(objeto)
+// 						var objeto = new ATObjeto3D(partes[1]);
+// 						objetos.push(objeto);
+// 						key = objeto.carregarOBJ(linhas, caminho, key);
+// 					break;
+// 				}
+// 			}
+// 			ATUtils.EventDispatcher.prototype.removerPendencia(cena.constructor.name, nome);
+// 			ATUtils.EventDispatcher.prototype.verificarPendencias();
+// 		});
+// 	}
 }
-ATUtils.EventDispatcher.prototype.apply( ATCena3D.prototype );
+ATUtils.inherits(ATCena3D, ATObjeto3D);

@@ -22,16 +22,20 @@
 // 	  engine.obterAtributosEUniforms("textura",
 // 	    ["aPosition","aTexture","aNormal"],
 // 	    ["uMMatrix","uVMatrix","uPMatrix","uNMatrix"]);
+    var caixa = engine.carregarOBJ("cubo","cubo.obj");
+    
 	  engine.pronta(function(){
 	    // Criar uma cena
 	    var cena = engine.getCena();
 	    var camera = engine.getCamera();
+	    cena.adicionarFilho(caixa);
+	    engine.desenhar(cena, camera);
 	    // Carregar um objeto na cena
-	    cena.carregarOBJ("caixa.obj");
+	    //cena.carregarOBJ("caixa.obj");
 	    // Quando a cena estiver pronta, desenhar
-	    cena.pronta(function(){
-	      cena.desenhar();
-	    });
+	    //cena.pronta(function(){
+	    //  cena.desenhar();
+	    //});
 	  });
 	}catch(e){
 	
